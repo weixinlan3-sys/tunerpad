@@ -1,0 +1,34 @@
+<svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg-color { fill: #eebb11; }
+      .text-color { fill: #ffffff; }
+      .border-color { stroke: #ffffff; stroke-width: 5; fill: none; }
+    </style>
+  </defs>
+
+  <g transform="translate(0, 5)">
+    <!-- 1. Hexagon Background (Behind everything) -->
+    <!-- Corrected to be a symmetric hexagon with a pointy top -->
+    <path class="bg-color" d="M150 10 L230 50 L230 140 L150 180 L70 140 L70 50 Z" />
+    
+    <!-- 2. Inner White Border (Inside Hexagon) -->
+    <!-- Symmetric inner border following the hexagon shape -->
+    <path class="border-color" d="M150 20 L220 55 L220 135 L150 170 L80 135 L80 55 Z" />
+
+    <!-- 3. Ribbon Tails (Middle Layer) -->
+    <!-- Kept wide as requested and verified correct -->
+    <path class="bg-color" d="M20 135 L80 135 L80 160 L20 180 L40 157 Z" />
+    <path class="bg-color" d="M280 135 L220 135 L220 160 L280 180 L260 157 Z" />
+
+    <!-- 4. Ribbon Front Banner (Top Layer) -->
+    <!-- Kept with white stroke gap as requested -->
+    <path class="bg-color" stroke="white" stroke-width="6" paint-order="stroke" d="M60 130 L240 130 L240 160 L150 185 L60 160 Z" />
+    
+    <!-- 5. Text: 100K+ -->
+    <text x="150" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="48" fill="white" letter-spacing="-1">100K+</text>
+    
+    <!-- 6. Text: OEM FILES -->
+    <text x="150" y="165" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="bold" font-size="24" fill="white" letter-spacing="1">OEM FILES</text>
+  </g>
+</svg>

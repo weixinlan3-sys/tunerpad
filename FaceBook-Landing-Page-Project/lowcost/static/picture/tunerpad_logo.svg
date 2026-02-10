@@ -1,0 +1,24 @@
+<svg width="400" height="100" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(20, 10)">
+    <!-- Pins (Vertical) -->
+    <line x1="25" y1="0" x2="25" y2="15" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="55" y1="0" x2="55" y2="15" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="25" y1="65" x2="25" y2="80" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="55" y1="65" x2="55" y2="80" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <!-- Pins (Horizontal) -->
+    <line x1="0" y1="25" x2="15" y2="25" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="55" x2="15" y2="55" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="65" y1="25" x2="80" y2="25" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    <line x1="65" y1="55" x2="80" y2="55" stroke="#fcb900" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Chip Body -->
+    <rect x="10" y="10" width="60" height="60" rx="10" fill="#fcb900"/>
+    
+    <!-- Brackets < > -->
+    <path d="M35 30 L25 40 L35 50" stroke="black" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45 30 L55 40 L45 50" stroke="black" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="110" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="50" fill="white">TunerPad</text>
+</svg>

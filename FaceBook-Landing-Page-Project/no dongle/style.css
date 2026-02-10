@@ -1,0 +1,1313 @@
+/* =========================================
+   全局变量设置
+   修改这里的颜色，整个网页的颜色都会变
+========================================= */
+:root {
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-yellow: rgb(253, 199, 0);       /* 信号黄 */
+    --color-yellow-hover: #FFEA00;
+    --color-red: #DC2626;                   /* 赛车红 */
+    --color-gray-dark: #1F2937;
+    --color-gray-light: #F3F4F6;
+    --color-border: #E5E7EB;
+    
+    /* 布局参数 */
+    --max-width: 1600px;                    /* 最大内容宽度 */
+    --radius-small: 10px;
+    --radius-large: 20px;
+}
+
+/* 基础重置 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--color-black);
+    line-height: 1.5;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* 通用容器 */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.text-center { text-align: center; }
+
+/* =========================================
+   按钮组件 (Button Styles)
+========================================= */
+.btn {
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.btn-yellow {
+    background-color: var(--color-yellow);
+    color: var(--color-black);
+}
+.btn-yellow:hover { background-color: var(--color-yellow-hover); }
+
+.btn-black {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+.btn-black:hover { opacity: 0.8; }
+
+.btn-small {
+    padding: 8px 20px;
+    border-radius: var(--radius-small);
+}
+.btn-large {
+    padding: 16px 40px;
+    font-size: 32px;
+    border-radius: var(--radius-large);
+}
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+}
+.btn-glow { box-shadow: 0 0 20px rgba(253, 199, 0, 0.5); }
+.btn-strong-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+
+/* =========================================
+   1. 顶部导航栏
+========================================= */
+.top-banner {
+    background-color: var(--color-black);
+    padding: 8px 0;
+    position: sticky; /* 导航栏吸顶 */
+    top: 0;
+    z-index: 1000;
+}
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo { height: 60px; width: auto; } /* 控制 Logo 大小 */
+/* style.css */
+.hero-micro-copy {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #6B7280; /* 灰色文字，显得低调有质感 */
+    font-weight: 500;
+}
+
+/* =========================================
+   2. Hero 区域
+========================================= */
+/* =========================================
+   Hero 首屏 (磨砂玻璃遮罩版) - 独立代码段
+========================================= */
+
+/* 1. 外层容器 */
+.hero-section {
+    position: relative;          /* 为遮罩层定位做准备 */
+    padding: 100px 0;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 100px;         /* 保持你原来的左侧留白 */
+    overflow: hidden;
+}
+
+/* 2. 【核心】黑色半透明遮罩 + 背景模糊 */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    
+    /* 黑色遮罩：0.6 代表 60% 不透明度 (可调 0.4 - 0.8) */
+    background: rgba(0, 0, 0, 0.1); 
+    
+    /* 背景模糊：神奇的高级感滤镜 */
+    backdrop-filter: blur(4px);      
+    -webkit-backdrop-filter: blur(4px); /* 兼容 Safari */
+    
+    z-index: 1; /* 放在背景图上面，文字下面 */
+}
+
+/* 3. 背景图片容器 */
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0; /* 最底层 */
+}
+
+.hero-bg img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; /* 保证填满不拉伸 */
+    opacity: 1;        /* 不需要降低透明度了，由遮罩层控制 */
+}
+
+/* 4. 内容区域 */
+.hero-content {
+    position: relative;
+    z-index: 2; /* 【关键】必须比遮罩层(1)大，文字才能被选中 */
+    width: 100%;
+    margin-left: 0 !important;  /* 覆盖你可能有的旧样式 */
+    margin-right: 0 !important;
+}
+
+/* 5. 字体样式优化 */
+.hero-content h1 {
+    font-size: 70px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #ffffff;
+    /* 阴影可以淡一点，因为背景已经变黑了 */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    /* 95% 白，增加层次感 */
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* 手机端适配 (防止 padding 把内容挤没) */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-left: 20px; /* 手机上左边距改小 */
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 42px; /* 手机上字体改小 */
+    }
+}
+/* =========================================
+   修正：第二板块 - 三栏优势布局
+   请把这段放在 style.css 最下面
+========================================= */
+
+/* === 外层布局 === */
+.feature-grid-3 {
+    display: flex;            /* 弹性布局 */
+    justify-content: space-between;
+    gap: 30px;                /* 盒子间距 */
+    width: 100%;
+    margin-top: 100px;        /* 离上方 Hero 的距离 */
+}
+
+/* === 单个盒子 (修复对齐的核心) === */
+.feature-box {
+    flex: 1;                  /* 三个盒子平分宽度 */
+    
+    /* ▼▼▼ 关键修改：强制居中对齐 ▼▼▼ */
+    display: flex;
+    flex-direction: column;   /* 竖着排：图标-标题-文字 */
+    align-items: center;      /* 水平居中 */
+    text-align: center;       /* 文字内容居中 */
+    
+    padding: 50px 30px;       /* 内边距：上下50，左右30 */
+    min-height: 400px;        /* 保证高度一致 */
+    
+    background-color: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    
+    transition: transform 0.3s ease; /* 增加一点交互动效 */
+}
+
+/* 鼠标放上去浮动一下 */
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* === 图标样式 === */
+.feature-icon {
+    font-size: 50px;
+    color: #000000;           /* 黑色图标 (或者改成 var(--color-yellow) ) */
+    margin-bottom: 25px;      /* 离标题的距离 */
+    
+    /* 阴影增加立体感 */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* === 标题样式 === */
+.feature-box h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #111827;           /* 深黑 */
+    position: relative;
+    width: 100%;              /* 确保占满宽，方便横线居中 */
+}
+
+/* === 黄色装饰线 (修复居中) === */
+.feature-box h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: #FFD700; /* 你的品牌黄 */
+    border-radius: 2px;
+    
+    /* ▼▼▼ 关键：自动左右居中 ▼▼▼ */
+    margin: 12px auto 0;      
+}
+
+/* === 正文样式 === */
+.feature-box p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4B5563;           /* 深灰 */
+    margin-top: 10px;
+}
+
+/* === 手机端适配 === */
+@media (max-width: 768px) {
+    .feature-grid-3 {
+        flex-direction: column; /* 手机上变成竖排 */
+    }
+    
+    .feature-box {
+        width: 100%;            /* 手机上占满宽 */
+        min-height: auto;       /* 高度自动 */
+    }
+}
+/* =========================================
+   4. 信任条 (TrustBar)
+========================================= */
+/* === 核心容器设置 === */
+.security-hub-section {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hub-container {
+    /* 【关键修改 1】大幅缩小容器宽度 (从900 -> 720) */
+    /* 容器变窄了，左右两边的卡片就会被迫压在盾牌上 */
+    max-width: 720px; 
+    margin: 0 auto;
+    position: relative;
+    
+    /* 【关键修改 2】大幅缩小高度 (从580 -> 480) */
+    /* 高度变矮了，上下两边的卡片就会压住盾牌的头和脚 */
+    height: 480px;    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 评价卡片作者容器：让头像和名字横向排列并居中 */
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;           /* 头像和文字的间距 */
+    margin-top: 15px;    /* 与上方文字的距离 */
+}
+
+/* 头像样式 */
+.review-avatar {
+    width: 40px;         /* 设定头像大小 */
+    height: 40px;
+    border-radius: 50%;  /* 强制圆形 */
+    object-fit: cover;   /* 确保图片不拉伸变形 */
+    border: 2px solid var(--color-yellow); /* 增加黄色边框呼应品牌色 */
+}
+
+/* 调整原有作者文字样式，去除不必要的上边距 */
+.review-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-top: 0 !important; 
+}
+/* === 中间核心部分 (盾牌) === */
+.hub-center {
+    text-align: center;
+    /* 盾牌层级要低，这样卡片才能盖住它 */
+    z-index: 1; 
+    
+    /* 【关键修改 3】保持盾牌足够大 */
+    width: 480px;      
+    animation: fadeInUp 1s ease-out;
+}
+
+.shield-text {
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 5; /* 文字层级高，防止被卡片遮挡 */
+}
+
+.shield-text h3 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.shield-text p {
+    font-size: 14px;
+    color: #6B7280;
+    line-height: 1.5;
+}
+
+.shield-image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.shield-img {
+    width: 100%;       
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    /* 去掉发光，保持干净 */
+    filter: none; 
+}
+
+/* 背后的光圈隐藏 */
+.glow-effect {
+    display: none;
+}
+
+/* === 四周卡片：通用样式 === */
+.review-card {
+    position: absolute;
+    width: 220px;       
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    /* 加上一点微弱的阴影，让它和盾牌重叠时有层次感 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+    border: 1px solid #e5e7eb; 
+    
+    /* 【关键】层级必须比盾牌高，才能覆盖在盾牌上 */
+    z-index: 10; 
+}
+
+.review-content {
+    font-size: 12px;
+    color: #374151;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.review-author {
+    font-size: 11px;
+    font-weight: 700;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* === 【核心修改】不规则挤压定位 === */
+/* 因为容器(.hub-container)现在很小(720x480)，而盾牌很大(480宽) */
+/* 卡片在边缘时，会自动覆盖盾牌的边缘 */
+
+/* 左上：往下沉一点，向里挤 */
+.pos-top-left {
+    top: 40px;     
+    left: 0px;    
+}
+
+/* 右上：位置更低，制造错落感 */
+.pos-top-right {
+    top: 100px;    
+    right: -10px; /* 负数表示稍微往外溢出一点，制造动感 */
+}
+
+/* 左下：往上提，压住盾牌左下角 */
+.pos-bottom-left {
+    bottom: 80px; 
+    left: -10px;    
+}
+
+/* 右下：沉底，压住盾牌右下角 */
+.pos-bottom-right {
+    bottom: 0px;
+    right: 0px;   
+}
+
+/* === 动画 === */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === 手机端适配 === */
+@media (max-width: 1024px) {
+    .hub-container {
+        height: auto;
+        flex-direction: column;
+        padding-bottom: 40px;
+    }
+    .hub-center {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 30px;
+    }
+    .review-card {
+        position: static;
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 15px;
+        transform: none;
+        z-index: 1;
+    }
+}
+/* =========================================
+   5. 对比部分 (VS Section)
+========================================= */
+/* === 容器布局 === */
+.comparison-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* 让两个盒子等高 */
+    gap: 0;               /* 两个盒子紧贴，中间放VS */
+    max-width: 1000px;
+    margin: 50px auto;
+    position: relative;
+}
+
+/* === 通用卡片样式 === */
+.compare-card {
+    flex: 1;
+    background: #fff;
+    padding-bottom: 40px; /* 底部留白 */
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+/* 左边：传统软件 (灰色调，压抑感) */
+.compare-card.traditional {
+    background-color: #f9fafb; /* 浅灰背景 */
+    border-right: none;        /* 去掉右边框，和右边卡片融合 */
+    border-radius: 16px 0 0 16px; /* 左边圆角 */
+}
+
+/* 右边：TunerPad (亮色调，高级感) */
+.compare-card.tunerpad {
+    background-color: #ffffff;
+    border-radius: 0 16px 16px 0; /* 右边圆角 */
+    border: 1px solid #FFD700;    /* 品牌色边框 */
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15); /* 金色光晕阴影 */
+    z-index: 2;                   /* 保证它浮在最上面 */
+    transform: scale(1.02);       /* 稍微放大一点，突出主角地位 */
+}
+
+/* === 图片区域 === */
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+ 
+}
+
+/* === 内容排版 === */
+.card-content {
+    padding: 30px;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+/* === 单个对比项 (图标+文字) === */
+.compare-item {
+    display: flex;
+    align-items: flex-start; /* 顶部对齐 */
+    margin-bottom: 25px;     /* 增加间距 */
+}
+
+/* 图标样式 */
+.cross-icon {
+    color: #ef4444; /* 红色叉号 */
+    font-size: 20px;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.check-icon {
+    background-color: #FFD700; /* 黄色圆底 */
+    color: #000;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 15px;
+    margin-top: 2px;
+    flex-shrink: 0; /* 防止图标被挤压 */
+}
+
+/* 文字组样式 */
+.text-group strong {
+    display: block;
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.text-group p {
+    font-size: 13px;       /* 说明文字小一点 */
+    color: #666;           /* 灰色 */
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* === 中间 VS 徽章 === */
+.vs-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: #ef4444; /* 红色战斗感 */
+    color: white;
+    font-weight: 900;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;    /* 白边防撞色 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* === 手机端适配 === */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column; /* 手机上竖着排 */
+        align-items: center;
+    }
+    .compare-card.traditional, 
+    .compare-card.tunerpad {
+        border-radius: 16px;    /* 手机上都要圆角 */
+        width: 100%;
+        transform: none;        /* 取消放大效果 */
+    }
+    .vs-badge {
+        top: auto;
+        bottom: -30px; /* 放在中间连接处 */
+    }
+}
+/* === 图片区域容器 (新增 padding) === */
+.card-image {
+    /* 【关键修改】给四周留出空白，让图片往里收 */
+    padding: 20px 20px 0 20px; 
+    background: transparent; /* 确保背景干净 */
+}
+
+/* === 图片本体 (新增圆角和边框) === */
+.card-image img {
+    width: 100%;
+    /* 稍微调整高度，因为有padding了，太高不好看 */
+    height: 180px; 
+    object-fit: cover;
+    
+    /* 【关键修改】加上圆角边框 */
+    border-radius: 12px;         /* 圆角大小 */
+    border: 2px solid #e5e7eb;   /* 浅灰色精致边框 */
+    
+    /* 【可选】加一点点阴影，让照片有微微浮起的感觉，更立体 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06); 
+    
+    /* 注意：去掉你之前可能写过的 border-bottom，因为现在四周都有边框了 */
+}
+/* =========================================
+   6. 定价部分 (Pricing)
+========================================= */
+/* =========================================
+   紧凑版定价区域样式 (Compact Version)
+========================================= */
+
+.pricing-section { 
+    /* 【瘦身】上下内边距从 50px 减小到 30px */
+    padding: 30px 20px; 
+}
+
+/* 专门控制定价区域的大标题 */
+.pricing-section h2 {
+    /* 【瘦身】字体从 56px 减小到 36px，足够清晰但更省空间 */
+    font-size: 36px;  
+    font-weight: 900; 
+    /* 【瘦身】下边距从 40px 减小到 15px */
+    margin-bottom: 15px; 
+}
+
+/* =========================================
+   新版：胶囊切换器样式
+========================================= */
+.pricing-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 【瘦身】大幅减小上下间距 */
+    margin-bottom: 25px; 
+    margin-top: 10px;    
+    gap: 15px; 
+}
+
+/* 灰色的胶囊背景容器 */
+.toggle-pill {
+    background-color: #E5E7EB; 
+    padding: 3px;             
+    display: flex;
+    position: relative;
+    border-radius: 999px; 
+}
+
+/* 内部的选项按钮 */
+.toggle-option {
+    /* 【瘦身】按钮变薄：10px -> 6px，文字变小 */
+    padding: 6px 20px; 
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px; /* 字号改小 */
+    color: black; 
+    transition: all 0.3s ease; 
+    user-select: none; 
+}
+
+/* 选中状态 */
+.toggle-option.active {
+    background-color: var(--color-yellow); 
+    color: var(--color-black); 
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 右边的优惠文字 */
+.save-badge {
+    color: #de1010; 
+    font-weight: bold;
+    font-size: 13px; /* 【瘦身】字号微调 */
+}
+
+/* =========================================
+   价格卡片网格 (核心瘦身区)
+========================================= */
+.pricing-grid {
+    display: grid;
+    /* 保持响应式，但最小宽度稍微改小一点防止手机上太挤 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* 【瘦身】间距 30px -> 20px */
+    align-items: stretch; /* 让卡片高度自动拉伸对齐，显得更整齐 */
+}
+
+.price-card {
+    border: 1px solid var(--color-border);
+    /* 【瘦身关键】内边距从 40px 减小到 25px */
+    padding: 25px; 
+    border-radius: 12px;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+/* 中间的高亮卡片 */
+.price-card.popular {
+    border: 2px solid var(--color-yellow); /* 边框改细一点点 */
+    position: relative;
+    /* 【瘦身】顶部留白减小 */
+    padding-top: 35px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* 加一点阴影更有质感 */
+}
+
+/* 热门推荐标签 */
+.popular-tag {
+    position: absolute;
+    top: -12px; /* 稍微调整位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-yellow);
+    padding: 4px 15px; /* 标签改小 */
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px; /* 字体改小 */
+    white-space: nowrap;
+}
+/* 专门控制 "Billed €329 yearly" 这种小字的样式 */
+.billed-yearly {
+    display: block;       /* 让它强制换行，跑到数字下面 */
+    font-size: 12px;      /* 字号很小，不占地方 */
+    color: #9ca3af;       /* 浅灰色，降低视觉干扰 */
+    font-weight: normal;  /* 不加粗 */
+    margin-top: 2px;      /* 紧贴上面的大数字 */
+    line-height: 1.2;
+}
+
+/* 价格数字 */
+.price-tag {
+    /* 【瘦身关键】从 48px 减小到 38px */
+    font-size: 38px; 
+    font-weight: 900;
+    /* 【瘦身】上下间距减半 */
+    margin: 10px 0; 
+    color: #111;
+}
+
+.price-tag .period {
+    font-size: 14px; /* 字体改小 */
+    color: gray;
+    font-weight: normal;
+}
+
+/* 功能列表区域 */
+.price-features {
+    margin-top: 15px;
+}
+
+.price-features p {
+    /* 【瘦身】列表项间距从 10px 减小到 6px */
+    margin-bottom: 6px; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px; /* 【瘦身】正文字体改小，这最能省空间 */
+    color: #4b5563;
+}
+
+/* 禁用项样式 */
+.price-features .disabled { 
+    opacity: 0.5; 
+    text-decoration: line-through; 
+}
+
+/* 高亮项样式 */
+.price-features .highlight { 
+    font-weight: bold; 
+    color: #000;
+}
+/* =========================================
+   价格卡片按钮增强 (圆润、醒目、居中)
+========================================= */
+
+/* 统一卡片内部布局，确保内容垂直分布 */
+.price-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 让按钮始终在最底部对齐 */
+}
+
+.pricing-btn {
+    display: block;           /* 块级显示，占据整行 */
+    width: 100%;             /* 宽度 100% */
+    text-align: center;       /* 文字水平居中 */
+    background-color: var(--color-yellow); /* 使用你的黄色变量 */
+    color: #000 !important;   /* 文字黑色 */
+    padding: 14px 24px;       /* 增加内边距，让按钮看起来更大 */
+    border-radius: 999px;     /* 极大的圆角，形成圆润的胶囊状 */
+    font-weight: 800;         /* 字体加粗 */
+    font-size: 16px;          /* 字体适中 */
+    text-decoration: none;    /* 去掉下划线 */
+    margin-top: 25px;         /* 与上方列表保持间距 */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 增加弹性过渡 */
+    border: none;
+    box-shadow: 0 4px 0px #b89600; /* 底部深色投影，增加立体感 */
+    cursor: pointer;
+}
+
+/* 悬停效果：按钮轻微上移并增加阴影 */
+.pricing-btn:hover {
+    transform: translateY(-3px); /* 向上浮动 */
+    box-shadow: 0 8px 15px rgba(255, 214, 0, 0.3); /* 增加发光阴影 */
+    background-color: #ffe033; /* 悬停时颜色稍微亮一点 */
+}
+
+/* 点击按下效果 */
+.pricing-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 0px #b89600;
+}
+
+/* 如果是高亮卡片（Essential），按钮可以更显眼 */
+.price-card.popular .pricing-btn {
+    background-color: var(--color-yellow);
+    /* 可以在这里给中间的按钮加一个持续的微弱呼吸动画 */
+    animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+/* 基础按钮样式 - 保持圆润和居中 */
+.pricing-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* 预留边框位置防止抖动 */
+    cursor: pointer;
+}
+
+/* 中间显眼的按钮：黄色实心 */
+.btn-primary {
+    background-color: var(--color-yellow);
+    color: #000 !important;
+    box-shadow: 0 4px 12px rgba(255, 214, 0, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: #ffe033;
+    box-shadow: 0 6px 15px rgba(255, 214, 0, 0.4);
+}
+
+/* 两侧不显眼的按钮：镂空设计 (Ghost Button) */
+/* 这种设计在专业 SaaS 页面中非常流行，能有效形成对比 */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #e5e7eb; /* 浅灰色边框 */
+    color: #6b7280 !important; /* 灰度文字 */
+}
+
+.btn-secondary:hover {
+    border-color: #9ca3af;
+    color: #374151 !important;
+    background-color: #f9fafb; /* 极浅的灰色背景 */
+}
+/* =========================================
+   7. 底部 CTA & Footer
+========================================= */
+/* =========================================
+   底部号召栏 (Footer CTA) - 视觉聚焦版
+========================================= */
+
+/* 1. 外层容器：给足呼吸感 */
+.footer-cta-section {
+    padding: 80px 20px; /* 上下留白多一点，大气 */
+    background-color: #ffffff;
+}
+
+/* 2. 核心盒子：大白框 + 阴影 */
+.cta-box {
+    border: 4px solid #000; /* 保持你的硬朗黑框风格 */
+    background-color: #fff;
+    
+    /* 尺寸控制 */
+    max-width: 900px;
+    width: 90%;
+    margin: 0 auto; /* 居中 */
+    
+    /* 内部排版 */
+    padding: 70px 30px; 
+    text-align: center;
+    border-radius: 12px;
+    
+    /* 加上浮起的大阴影，让它从页面里跳出来 */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+}
+
+/* 3. 主标题：巨大、醒目 */
+.cta-box h2 {
+    font-size: 48px;     
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 15px; 
+    line-height: 1.1;
+    letter-spacing: -1px; /* 字母挤一点，更紧凑有力 */
+}
+
+/* 4. 副标题：灰色、消除顾虑 */
+.cta-subtitle {
+    font-size: 18px;
+    color: #666;         
+    margin-bottom: 40px; /* 离按钮远一点 */
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* 5. 按钮：品牌黄、圆润 */
+.cta-btn {
+    display: inline-block;
+    background-color: #FFD700; /* 品牌黄 */
+    color: #000;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 18px 60px;  /* 按钮宽一点 */
+    border-radius: 50px; /* 全圆角 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* 按钮自带小阴影 */
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* 按钮悬停效果 */
+.cta-btn:hover {
+    transform: translateY(-4px) scale(1.05); /* 上浮 + 微微放大 */
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* === 手机端适配 === */
+@media (max-width: 768px) {
+    .cta-box { padding: 50px 20px; }
+    .cta-box h2 { font-size: 32px; } /* 手机上字号改小 */
+    .cta-subtitle { font-size: 15px; }
+    .cta-btn { 
+        width: 100%;       /* 手机上按钮通栏 */
+        padding: 16px 0; 
+    }
+}
+/* === 底部 Footer 样式 === */
+.main-footer {
+    border-top: 1px solid #e5e7eb; /* 顶部分割线 */
+    padding: 40px 0;
+    margin-top: 80px; /* 离上面的 CTA 远一点 */
+    background-color: #fff;
+}
+
+/* 核心布局：两端对齐 */
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* 关键：左一个，右一个 */
+    align-items: center;            /* 垂直居中 */
+}
+
+/* 左侧区域样式 */
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Logo 和版权文字的间距 */
+}
+
+.footer-logo {
+    height: 24px; /* Logo 大小 */
+    width: auto;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #9ca3af; /* 浅灰色 */
+}
+
+/* 右侧链接样式 */
+.footer-links {
+    display: flex;
+    gap: 25px; /* 链接之间的间距 */
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #6b7280; /* 灰色链接 */
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #000; /* 悬停变黑 */
+}
+
+/* === 手机端适配 === */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* 手机上竖着排 */
+        gap: 20px;
+    }
+    
+    .footer-links {
+        flex-direction: column; /* 链接也竖着排，或者 wrap */
+        align-items: center;
+        gap: 15px;
+    }
+}
+/* 专门控制底部 CTA 盒子里的按钮 */
+.cta-box .btn {
+    /* 1. 控制按钮有多大 (内边距) */
+    /* 第一个数字是上下高度，第二个数字是左右宽度 */
+    padding: 15px 40px;   /* 现在的比较大，你可以改小，比如 15px 40px */
+    /* 2. 控制文字有多大 */
+    font-size: 28px;      /* 想小一点就改成 24px */
+
+    /* 3. (可选) 如果想要按钮占满整行，把下面这行注释取消掉 */
+    /* width: 100%; */
+    
+    /* 4. (可选) 调整圆角 */
+    border-radius: 50px; 
+}
+/* =========================================
+   5. Facebook Exclusive Promotion Styles
+========================================= */
+
+/* Top Notification Bar */
+.top-notification-bar {
+    background-color: var(--color-yellow);
+    color: #000;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 800;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Higher than nav */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* FB Special Badge */
+.fb-special-badge {
+    position: absolute;
+    top: 100px;
+    right: -10px;
+    background-color: #ff4500; /* Orange/Red for Facebook Special - High Contrast */
+    color: white;
+    padding: 5px 10px;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 1.2;
+    text-align: center;
+    transform: rotate(10deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    border-radius: 4px;
+}
+
+/* Scarcity Badge (Only 14 Spots Left) */
+.promo-badge-container {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.scarcity-badge {
+    display: inline-block;
+    background-color: rgba(220, 38, 38, 0.1); /* Light Red BG */
+    color: var(--color-red);
+    border: 1px solid var(--color-red);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+/* Future Price Text (Then �?9/mo) */
+.future-price-text {
+    font-size: 14px;
+    color: #6B7280;
+    text-decoration: line-through;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Offer Status / Progress Bar */
+.offer-status {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.offer-status p {
+    font-size: 12px;
+    color: #4B5563;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background-color: #E5E7EB;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-yellow);
+    border-radius: 3px;
+}
+
+.claimed-text {
+    font-size: 11px !important;
+    color: var(--color-yellow) !important; /* Make it pop or match brand */
+    text-align: right;
+    font-weight: 800 !important;
+}
+
+/* Adjust Essential Card to fit new content without exploding height */
+.price-card.popular {
+    padding-top: 25px; /* Reduce top padding slightly to accommodate badge */
+}
+
+.price-card.popular .price-tag {
+    margin: 5px 0; /* Reduce margin */
+}
+
+.price-card.popular .card-plan-name {
+    margin-bottom: 5px; /* Reduce margin */
+}
+
+/* Floating Promo Widget */
+.floating-promo-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: float-up 0.5s ease-out, pulse-border 2s infinite;
+    border: 2px solid var(--color-yellow);
+    max-width: 300px;
+}
+
+.widget-content {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 12px;
+    position: relative;
+}
+
+.widget-icon {
+    font-size: 24px;
+}
+
+.widget-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.widget-text strong {
+    font-size: 14px;
+    color: #000;
+}
+
+.widget-text span {
+    font-size: 12px;
+    color: #4B5563;
+}
+
+.widget-close {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #9CA3AF;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.widget-close:hover {
+    color: #000;
+}
+
+@keyframes float-up {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+    50% { box-shadow: 0 5px 25px rgba(255, 193, 7, 0.4); }
+    100% { box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+}
+
+/* Helper for Red Text */
+.text-highlight-red {
+    color: #ef4444 !important;
+}
+
+
+/* =========================================
+   7. Missing Promo Styles
+========================================= */
+
+.btn-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid #E5E7EB;
+    background: transparent;
+    color: #111;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding doesn't affect width calculation */
+}
+
+.btn-outline:hover {
+    border-color: #000;
+    color: #000;
+    background: #f9fafb;
+}
+
+.check {
+    color: #059669; /* Green checkmark */
+    font-weight: 900;
+    font-size: 16px;
+    min-width: 20px; /* Ensure alignment */
+}
+
+/* Make the Essential card features pop more */
+.price-card.popular .check {
+    color: #000; /* Stronger contrast on the main card */
+}
+
+/* Ensure the Essential button looks actionable */
+.price-card.popular .btn-yellow {
+    color: #000 !important;
+    font-size: 18px;
+    padding: 16px;
+    box-shadow: 0 4px 14px 0 rgba(253, 199, 0, 0.39);
+}
+
+.price-card.popular .btn-yellow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(253, 199, 0, 0.23);
+}
+

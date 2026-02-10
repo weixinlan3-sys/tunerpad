@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TunerPad | Professional DAMOS Cloud Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="top-banner">
+        <p>🎉 TunerPad Official Launch: <strong>7-Day Free Trial</strong> Available Now! <span class="desktop-only">Ends in 48 Hours.</span></p>
+    </div>
+    
+    <div class="floating-banner">
+        <div class="fb-content">
+            <p class="fb-title"><strong>7-Day Free Trial</strong></p>
+            <div class="fb-timer-wrapper">
+                <span class="fb-timer-label">Remaining:</span>
+                <span id="countdown-timer" class="fb-timer-digits">47:59:59</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar reveal-down">
+        <div class="container nav-flex">
+            <div class="brand">
+                <picture>
+                    <source srcset="picture/logo-black.webp" type="image/webp">
+                    <img src="image/logo-black.png" alt="TunerPad" class="nav-logo" loading="lazy">
+                </picture>
+            </div>
+            <div class="nav-btn-group">
+                <a href="#" class="btn btn-primary btn-sm hover-lift">START TUNING NOW</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="section-bg bg-hero">
+        <div class="container hero-content text-center">
+            <div class="hero-badge reveal fade-up">
+                <span class="dot-pulse"></span> <span class="blink-text">NATIVE DAMOS DECODER ACTIVE</span>
+            </div>
+            
+            <h1 class="hero-title reveal fade-up delay-1">
+                <span class="text-highlight glitch-effect" data-text="DAMOS IMPORT">DAMOS IMPORT</span><br>
+                INSTANT & NATIVE.
+            </h1>
+            
+            <p class="hero-desc reveal fade-up delay-2">
+                The faster you map, the more you earn. Support for <strong>.a2l, .kp, and .osl</strong> natively. <br>
+                No plugins, no drivers. <strong>Turn data into shop profit immediately.</strong>
+            </p>
+
+            <div class="hero-actions reveal fade-up delay-3">
+                <a href="#" class="btn btn-primary btn-lg btn-glow hover-lift">
+                    START TUNING NOW <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="simulator-video-container reveal zoom-in delay-4">
+                <div class="browser-header">
+                    <div class="traffic-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="url-bar">cloud.tunerpad.interface</div>
+                </div>
+                
+                <div class="simulator-body">
+                    <div class="scanner-line"></div>
+                    
+                    <div class="sim-content">
+                        <div class="icon-pulse">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h3 class="status-title">Parsing Map Data...</h3>
+                        
+                        <div class="progress-wrapper">
+                            <div class="progress-track">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span class="stat">
+                                    <i class="fas fa-gauge-high"></i>
+                                    <em>Progress</em>
+                                    <b class="percentage"></b>
+                                </span>
+                                <span class="stat">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <em>Time</em>
+                                    <b class="time-elapsed"></b>
+                                </span>
+                            </div>
+                        </div>
+            
+                        <div class="result-console">
+                            <p class="console-line">> Source: <span class="text-white">Bosch_EDC17_CP46.a2l</span></p>
+                            <p class="console-line yellow-glow">> 18,500 Maps Unlocked (0.2s)</p>
+                        </div>
+                    </div>
+            
+                    <div class="map-grid-preview">
+                        <div class="mesh-line horizontal"></div>
+                        <div class="mesh-line vertical"></div>
+                        <div class="map-peak"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section-bg bg-comparison reveal">
+        <div class="container">
+            <div class="section-header text-center mb-50">
+                <h2>Stop Struggling. Start Earning.</h2>
+                <p class="text-gray">Why 5,000+ workshops left traditional software behind.</p>
+            </div>
+            
+            <div class="vs-wrapper">
+                <div class="vs-card old">
+                <div class="status-label">OBSOLETE</div>
+                <picture>
+                    <source srcset="picture/past.webp" type="image/webp">
+                    <img src="image/past.png" alt="Past Workflow" class="compare-img" loading="lazy">
+                </picture>
+                <h3>The Legacy Way</h3>
+                    <ul class="vs-list">
+                        <li><i class="fas fa-times"></i> Wasting hours fixing drivers</li>
+                        <li><i class="fas fa-times"></i> Plugin errors and DLL crashes</li>
+                        <li><i class="fas fa-times"></i> Frozen PC on large DAMOS</li>
+                        <li><i class="fas fa-times"></i> Dongle lost = Shop closed</li>
+                    </ul>
+                </div>
+
+                <div class="vs-divider">VS</div>
+
+                <div class="vs-card new">
+                <div class="status-label text-yellow">RECOMMENDED</div>
+                <picture>
+                    <source srcset="picture/now.webp" type="image/webp">
+                    <img src="image/now.jpg" alt="Now Workflow" class="compare-img" loading="lazy">
+                </picture>
+                <h3>The TunerPad Way</h3>
+                    <ul class="vs-list">
+                        <li><i class="fas fa-check"></i> <strong>0.3s Instant DAMOS Parsing</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Native Browser Workflow</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Smooth 10,000+ Map Rendering</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>Mac, PC, or iPad Ready</strong></li>
+                    </ul>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bg bg-features">
+        <div class="container">
+            <div class="grid-4">
+                <div class="f-card reveal fade-up">
+                    <i class="fas fa-bolt f-icon pulse-on-hover"></i>
+                    <h3><strong>Master Every DAMOS</strong></h3>
+                    <p>Native support for .a2l, .osl, and .kp. Never turn away a profitable customer again due to format errors.</p>
+                </div>
+                <div class="f-card reveal fade-up delay-1">
+                    <i class="fas fa-shield-halved f-icon rotate-on-hover"></i>
+                    <h3><strong>Zero Setup Time</strong></h3>
+                    <p>Stop fighting with DLLs and IT issues. Log in and start earning in 30 seconds on any device.</p>
+                </div>
+                <div class="f-card reveal fade-up delay-2">
+                    <i class="fas fa-gauge-high f-icon zoom-on-hover"></i>
+                    <h3><strong>Unmatched Performance</strong></h3>
+                    <p>Smooth rendering of 10,000+ maps. Turn your basic shop laptop into a high-speed tuning workstation.</p>
+                </div>
+                <div class="f-card reveal fade-up delay-3">
+                    <i class="fas fa-cloud f-icon bounce-on-hover"></i>
+                    <h3><strong>Cloud-Native Freedom</strong></h3>
+                    <p>Your work follows you. Access your projects from home, the shop, or on the road—no dongle required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ticker-section">
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <picture><source srcset="picture/bosch.webp" type="image/webp"><img src="image/bosch.png" alt="Bosch" loading="lazy"></picture>
+                <picture><source srcset="picture/delphi.webp" type="image/webp"><img src="image/delphi.png" alt="Delphi" loading="lazy"></picture>
+                <picture><source srcset="picture/marelli.webp" type="image/webp"><img src="image/marelli.png" alt="Marelli" loading="lazy"></picture>
+                <picture><source srcset="picture/continentgal.webp" type="image/webp"><img src="image/continentgal.png" alt="Continental" loading="lazy"></picture>
+                <picture><source srcset="picture/vdo.webp" type="image/webp"><img src="image/vdo.png" alt="VDO" loading="lazy"></picture>
+                <picture><source srcset="picture/acdelco.webp" type="image/webp"><img src="image/acdelco.png" alt="ACDelco" loading="lazy"></picture>
+                <picture><source srcset="picture/transtron.webp" type="image/webp"><img src="image/transtron.png" alt="Transtron" loading="lazy"></picture>
+                
+                <!-- Duplicate for infinite loop -->
+                <picture><source srcset="picture/bosch.webp" type="image/webp"><img src="image/bosch.png" alt="Bosch" loading="lazy"></picture>
+                <picture><source srcset="picture/delphi.webp" type="image/webp"><img src="image/delphi.png" alt="Delphi" loading="lazy"></picture>
+                <picture><source srcset="picture/marelli.webp" type="image/webp"><img src="image/marelli.png" alt="Marelli" loading="lazy"></picture>
+                <picture><source srcset="picture/continentgal.webp" type="image/webp"><img src="image/continentgal.png" alt="Continental" loading="lazy"></picture>
+                <picture><source srcset="picture/vdo.webp" type="image/webp"><img src="image/vdo.png" alt="VDO" loading="lazy"></picture>
+                <picture><source srcset="picture/acdelco.webp" type="image/webp"><img src="image/acdelco.png" alt="ACDelco" loading="lazy"></picture>
+                <picture><source srcset="picture/transtron.webp" type="image/webp"><img src="image/transtron.png" alt="Transtron" loading="lazy"></picture>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-bg bg-footer">
+        <div class="container">
+            <h2 class="text-center mb-50 reveal fade-up">Scale Your Business</h2>
+            
+            <!-- Pricing Toggle -->
+            <div class="pricing-toggle-wrapper reveal fade-up">
+                <div class="pricing-toggle">
+                    <button class="toggle-btn active" data-plan="monthly">Pay Monthly</button>
+                    <button class="toggle-btn" data-plan="yearly">Pay Yearly</button>
+                </div>
+                <span class="save-badge">Save 30% with yearly billing</span>
+            </div>
+
+            <div class="pricing-deck">
+                <!-- Basic Plan -->
+                <div class="p-card reveal fade-left">
+                    <h3>Basic</h3>
+                    <div class="price-container">
+                        <div class="price" data-monthly="€39" data-yearly="€27.25">€27.25<span>/month</span></div>
+                        <div class="billed-text">Billed €329 yearly</div>
+                    </div>
+                    <ul class="p-list">
+                        <li><i class="fas fa-check"></i> 20 DTC Off Per Month</li>
+                        <li class="text-muted text-strike"><i class="fas fa-times"></i> 0 Solutions Per Month</li>
+                        <li><i class="fas fa-check"></i> 5 Original File Download</li>
+                        <li><i class="fas fa-check"></i> Tuning Editor Features</li>
+                        <li><i class="fas fa-check"></i> DAMOS Import</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline btn-block">START BASIC</a>
+                </div>
+
+                <!-- Essential Plan -->
+                <div class="p-card featured reveal fade-up">
+                    <div class="ribbon">MOST POPULAR</div>
+                    <div class="promo-badge">FB EXCLUSIVE</div>
+                    <h3>Essential</h3>
+                    <div class="price-container">
+                        <div class="price text-yellow" data-monthly="€0.00" data-yearly="€41.25">€0.00<span>/month</span></div>
+                        <div class="billed-text" data-billed-monthly="€59/mo after 7-day free trial" data-billed-yearly="Billed €499 yearly">€59/mo after 7-day free trial</div>
+                    </div>
+                    <ul class="p-list">
+                        <li><i class="fas fa-check"></i> 300 DTC Off Per Month</li>
+                        <li><i class="fas fa-check"></i> <strong>100 Solutions Per Month</strong></li>
+                        <li><i class="fas fa-check"></i> 5 Original File Download</li>
+                        <li><i class="fas fa-check"></i> Tuning Editor Features</li>
+                        <li><i class="fas fa-check"></i> DAMOS Import</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-block shadow-yellow">GET ESSENTIAL</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="p-card reveal fade-right">
+                    <h3>Premium</h3>
+                    <div class="price-container">
+                        <div class="price" data-monthly="€99" data-yearly="€69.25">€69.25<span>/month</span></div>
+                        <div class="billed-text">Billed €899 yearly</div>
+                    </div>
+                    <ul class="p-list">
+                        <li><i class="fas fa-check"></i> 600 DTC Off Per Month</li>
+                        <li><i class="fas fa-check"></i> <strong>200 Solutions Per Month</strong></li>
+                        <li><i class="fas fa-check"></i> 100 Original File Download</li>
+                        <li><i class="fas fa-check"></i> Tuning Editor Features</li>
+                        <li><i class="fas fa-check"></i> DAMOS Import</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline btn-block">GO PREMIUM</a>
+                </div>
+            </div>
+
+            <div class="footer-cta text-center">
+                <h2 class="reveal fade-up">Your DAMOS files are ready. Are you?</h2>
+                <a href="#" class="btn btn-primary btn-lg btn-glow hover-lift reveal fade-up delay-1">START TUNING NOW</a>
+                <p class="copyright">© 2026 TunerPad Cloud. The future of ECU editing.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pricing Toggle Logic
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            const priceElements = document.querySelectorAll('.price');
+            const billedElements = document.querySelectorAll('.billed-text');
+
+            function updatePricing(plan) {
+                // Update buttons
+                toggleBtns.forEach(btn => {
+                    if (btn.dataset.plan === plan) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Update prices
+                priceElements.forEach(el => {
+                    const price = el.dataset[plan];
+                    el.innerHTML = `${price}<span>/month</span>`;
+                });
+
+                // Show/Hide billed yearly text
+                billedElements.forEach(el => {
+                    if (plan === 'monthly') {
+                        if (el.dataset.billedMonthly) {
+                            el.innerText = el.dataset.billedMonthly;
+                            el.style.opacity = '1';
+                        } else {
+                            el.style.opacity = '0';
+                        }
+                    } else {
+                        if (el.dataset.billedYearly) {
+                            el.innerText = el.dataset.billedYearly;
+                        }
+                        el.style.opacity = '1';
+                    }
+                });
+            }
+
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    updatePricing(btn.dataset.plan);
+                });
+            });
+
+            // Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+            // Countdown Timer Logic
+            function startCountdown(durationInSeconds) {
+                let timer = durationInSeconds;
+                const display = document.getElementById('countdown-timer');
+                
+                // Get end time from localStorage or set new one
+                // Changed key to 'promoEndTime_v3' to force reset for 48h update fix
+                let endTime = localStorage.getItem('promoEndTime_v3');
+                if (!endTime || new Date().getTime() > endTime) {
+                    endTime = new Date().getTime() + (durationInSeconds * 1000);
+                    localStorage.setItem('promoEndTime_v3', endTime);
+                }
+
+                setInterval(function () {
+                    const now = new Date().getTime();
+                    const distance = endTime - now;
+
+                    if (distance < 0) {
+                        // Reset timer if expired
+                        endTime = new Date().getTime() + (durationInSeconds * 1000);
+                        localStorage.setItem('promoEndTime_v3', endTime);
+                        return;
+                    }
+
+                    // Fix: Remove % (1000 * 60 * 60 * 24) to allow hours > 24
+                    const hours = Math.floor(distance / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    display.textContent = 
+                        (hours < 10 ? "0" + hours : hours) + ":" +
+                        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                        (seconds < 10 ? "0" + seconds : seconds);
+                }, 1000);
+            }
+            // Start 48 hours countdown
+            startCountdown(48 * 60 * 60);
+        });
+    </script>
+</body>
+</html>

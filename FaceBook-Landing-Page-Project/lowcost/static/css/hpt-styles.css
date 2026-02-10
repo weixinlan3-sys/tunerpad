@@ -1,0 +1,1303 @@
+/*CSS Styles for the Front End Page components*/
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px;  
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px;
+    margin-bottom: 16px; 
+    resize: vertical;
+}
+
+/* Add a background color and some padding around the form */
+.hpt_form_container {
+    margin-bottom: 10px;
+    margin-top:2px;
+    padding-bottom: 5px;
+}
+
+.hpt-mydevices-main hr { 
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 0px;
+    height:0px; 	
+}
+
+.hpt_form_container label{
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.hpt_form{
+    padding-top:20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+.hpt-myDevices-title
+{
+    padding-left: 20px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    line-height: 50px;
+    margin-top:0px;
+}
+
+.hpt-mydevices-main .woocommerce-error{
+    margin-bottom: 10px;
+}
+
+.woocommerce_options_panel.woo-hpt-meta-wrap{
+    padding: 0 !important;
+    min-height: auto !important;
+}
+.woo-hpt-order-tr{
+    background: #d1d7dc;
+}
+.woo-hpt-order-tr .woo-hpt-order-td{
+    font-weight: 600
+}
+
+.product-quantity {
+    font-size:16px;
+}
+
+/* Tooltip container */
+.hpt-tooltip-container{
+    position: relative;
+    display: block;
+    border-bottom: 1px dotted black;
+}
+
+/* Tooltip text */
+.hpt-tooltip-container .hpt-tooltip {
+    visibility: hidden;
+    width: 300px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size:16px;
+    line-height: 32px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.hpt-tooltip-container .hpt-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.hpt-tooltip-container:hover .hpt-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hpt-table-container{
+    overflow:auto;
+}
+
+.device_notes{
+    word-break: break-word;
+    max-width: 200px;
+}
+
+.link-button, .hpt_form input[type=submit] {
+    font-size:  14px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 4px 6px 4px 6px;
+}
+.link-button-upg{
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+    padding: 4px 6px 4px 6px;
+}
+
+.hpt_form input[type=submit]
+{
+    width: 150px;
+    height:40px;
+}
+
+/* Tab Styling */
+.tab {
+    overflow: hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+/*    border: 1px solid #ccc;
+    border-top: none;*/
+}
+
+/* Style the close button */
+.topright {
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.topright:hover {color: red;}
+
+.tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+.hpt-file-field{
+    width: 99%;
+    margin-right: 1%;
+}
+input.device_name, .save_device_data{
+    display:none;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.nowrap{
+    white-space: nowrap;
+}
+.actions-col{
+    padding:1em;
+}
+#search_device2_input, #search_device1_input{
+    max-width: 320px;
+}
+/*.single_add_to_cart_button{
+    margin-top:20px;
+}*/
+#vin_year{
+    max-width: 70%;
+    display: block;
+    height: 48px;
+    margin-bottom:10px;
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+.scrolling-table{
+    max-height: 900px;
+    overflow-y: auto;
+}
+.check_captcha{
+    margin-top: 5px;
+}
+
+
+input[type='email'] {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+#customer_login input[type=text], #customer_login input[type=email]{
+    margin: 0;
+    border-radius: 0;
+}
+#customer_login .anr_captcha_field_div {
+    margin-bottom: 15px;
+}
+.hpt_sn_select {
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+form.device_form {
+    display: inline;
+}
+button.device_btn {
+    color: #0f75bd;
+    background: none;
+    padding: 0 10px;
+}
+button.device_btn.upgrade_btn {
+    width: 100%;
+}
+.pcm_option_wrap {
+    margin-bottom: 30px;
+    max-width: 70%;
+}
+#custom_authorized_form .form-control{
+    margin:0 0 15px 0;
+    display: block;
+    width: 100%;
+}
+.payment_block input{
+    margin-right: 10px;
+}
+#do_you_sell{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#custom_authorized_form textarea{
+    color:#000;
+}
+.wrapper_register_user{
+    margin-top: 15px;
+    border: 1px solid #fff;
+    padding: 17px;
+    margin-bottom: 15px;
+}
+.reset_style h3{
+    margin-bottom: 0;
+}
+.reset_style input{
+    margin-left: 10px;
+}
+.terms_of_use{
+    vertical-align: text-bottom;
+}
+.unilateral_policy{
+    display: none;
+}
+
+.is-invalid input, .is-invalid select, .is-invalid textarea {
+    border: 1px solid red!important;
+    background-color: rgb(255, 240, 240)!important;
+    color: rgb(0, 0, 0)!important;
+}
+.total-price-note{
+    color: red;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.as-help-page .as-help-page__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto
+}
+
+.as-help-page .as-help-page__home_title {
+    color: #fff;
+    font-size: 2.6em;
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+
+.as-help-page .as-help-page__home_preview {
+    margin: 20px auto 20px;
+    min-height: 500px;
+    background-position: center;
+    background-size: cover
+}
+
+.as-help-page .as-help-page__home_description {
+    color: #fff;
+    line-height: 1.4;
+    margin: 10px auto 10px;
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+
+.as-help-page .as-help-page__main {
+    margin: 20px auto 20px
+}
+
+.as-help-page .as-help-page__main_row {
+    width: 100%;
+    display: flex
+}
+
+.as-help-page .as-help-page__main_col {
+    width: 100%;
+    max-width: 50%
+}
+
+.as-help-page .as-help-page__main_col_line {
+    width: 100%;
+    background: #273236;
+    margin-bottom: 10px;
+    height: 3px
+}
+
+.as-help-page__main_col_box_row {
+    display: flex;
+    padding-left: 25px;
+    align-items: center
+}
+
+.as-help-page .as-help-page__main_col_box_list_info {
+    padding-left: 35px;
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+}
+
+.as-help-page .as-help-page__main_col_box_list_title {
+    color: #fff;
+    font-size: 22px
+}
+
+.as-help-page .as-help-page__main_col_box_list_info {
+    margin: 10px auto 10px
+}
+
+.as-help-page .as-help-page__main_col_box_list_subtitle {
+    text-transform: uppercase;
+    color: #476f93;
+    font-size: 18px
+}
+
+.as-help-page .as-help-page__main_col_box_pattern_horizontal_line {
+    width: 20px;
+    height: 2px;
+    background: red
+}
+
+.as-help-page .as-help-page__main_col_box_pattern_vertical_line {
+    width: 2px;
+    background: red
+}
+
+.as-help-page__main_col_box_list {
+    position: relative
+}
+
+.as-help-page__main_col_box_list:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5%;
+    bottom: 5%;
+    height: 90%;
+    width: 2px;
+    background: #3c454c;
+    display: block
+}
+
+.as-help-page .as-help-page__main_col_box_list .as-help-page__main_col_box_list_info:first-child:before {
+    content: '';
+    width: 25px;
+    position: absolute;
+    left: 0;
+    top: 5%;
+    height: 2px;
+    background: #3c454c
+}
+
+.as-help-page .as-help-page__main_col_box_list .as-help-page__main_col_box_list_info:last-child:before {
+    content: '';
+    width: 25px;
+    position: absolute;
+    left: 0;
+    height: 2px;
+    bottom: 5%;
+    background: #3c454c
+}
+
+.as-help-page .as-help-page__main_col_image {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 400px
+}
+
+.as-help-page .as-help-page__main_col_box_list_model {
+    font-weight: bolder
+}
+
+.as-help-page .as-help-page__home_preview {
+    min-height: 200px;
+    background-size: contain;
+    margin: 5px auto 5px;
+    background-repeat: no-repeat
+}
+
+.as-help-page .as-help-page__home_title {
+    padding: 5px
+}
+
+.as-help-page .as-help-page__container {
+    width: auto
+}
+
+.as-help-page .as-help-page__home_description {
+    padding: 0 10px
+}
+
+.as-help-page__main {
+    padding: 0 10px
+}
+
+.as-help-page .as-help-page__main_row {
+    display: flex;
+    width: 100%;
+    flex-direction: column
+}
+
+.as-help-page .as-help-page__main_col {
+    width: 100%;
+    max-width: 100%
+}
+
+.as-help-page .as-help-page__main_title {
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 24px
+}
+
+.as-help-page .as-help-page__main_col_box_list_title {
+    color: #fff;
+    font-size: 14px
+}
+
+.as-help-page .as-help-page__main_col_box_list_subtitle {
+    text-transform: uppercase;
+    color: #476f93;
+    font-size: 13px
+}
+
+.as-help-page .as-help-page__gallery {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center
+}
+
+.as-help-page .as-help-page__gallery_img {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid wheat;
+    /*padding: 5px;*/
+    max-width: 300px;
+    margin: 5px auto 5px
+}
+
+.as-help-page .as-help-page__main_title {
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 700;
+    color: #fff;
+    text-align: center
+}
+
+.as-help-page .as-help-page__main_title .as-help-page__main_title_subtext {
+    color: #1873b3;
+    text-align: center
+}
+
+.as-help-page .as-help-page__main_col_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*flex-direction: column;*/
+
+}
+
+
+.as-help-page .as-help-page__main_col_box_title {
+    text-transform: uppercase;
+    font-family: supralight, "Source Sans Pro", HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-align: center
+}
+
+.as-help-page__main_col_box_row {
+    padding: 15px
+}
+
+.as-help-page .as-help-page__home_title {
+    text-align: center
+}
+
+.as-help-page .as-help-page__bottom_box {
+    display: flex;
+    margin: 10px auto 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*flex-direction: column;*/
+}
+
+.as-help-page .as-help-page__bottom_box .as-help-page__main_col_box_row {
+    justify-content: center;
+}
+body .chzn-container-active .chzn-single {
+    box-shadow: none;
+    border: 1px solid #aaa;
+}
+
+.square a {
+    border-radius: 0px !important;
+}
+
+body .chzn-container-single .chzn-single {
+    height: 38px;
+    line-height: 38px;
+}
+
+body .chzn-container-single .chzn-single div {
+    width: 16px;
+}
+
+body .chzn-container-single .chzn-single div b {
+    background-position: -2px 9px;
+    height: 35px;
+}
+
+body .chzn-container-active.chzn-with-drop .chzn-single div b {
+    background-position: -20px 9px;
+}
+
+
+body .chzn-container-single .chzn-single {
+    background: #fff;
+    border-radius: 2px;
+    border: none;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+#year_chzn {
+    box-shadow: none;
+}
+
+body .chzn-container-active.chzn-with-drop .chzn-single {
+    background: #fff;
+    border: none;
+    border-top: none;
+    height: 41px;
+}
+
+body .chzn-container-single .chzn-drop {
+    border-radius: 0 0 2px 2px;
+    border: none;
+    box-shadow: none;
+}
+
+body .chzn-container .chzn-results .highlighted {
+    background: #1c75ba;
+    border-radius: 2px
+}
+
+body .chzn-container .chzn-results li {
+    color: #000;
+}
+
+#vehicle_button {
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    height: 38px;
+    line-height: 36px;
+    padding: 0 25px;
+    border-radius: 2px;
+    border-bottom: 3px solid #000;
+    margin-top: 3px;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    transition: all .5s ease;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#authorized_table_wrapper .dataTables_wrapper .dataTables_filter input{
+    margin-right: 35px;
+}
+#vehicle_button:hover {
+    border-bottom: 5px solid #5f6062;
+    position: relative;
+    top: -2px;
+    background: #5f6062;
+}
+
+.vehicle_form_parent {
+    background-color: #1c75ba;
+    border-radius: 2px;
+    line-height: 80px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.vehicle_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vehicle_container > span {
+    font-size: 23px;
+}
+
+body .chzn-container-single .chzn-default {
+    color: #999;
+    background: #fff;
+    border-radius: 2px;
+    border: none;
+    font-size: 21px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 1px 0 0 0 rgba(0 0 0 0.1);
+
+}
+
+body .chzn-container {
+    margin-bottom: 3px;
+}
+
+body .chzn-container-single .chzn-single span {
+    font-size: 18px;
+    color: #999;
+}
+
+.vehicle_form {
+    margin: 0 !important;
+}
+
+.vehicle_result {
+    display: flex;
+    justify-content: start;
+}
+
+.vehicle_info_parent > .logos_parent {
+    display: flex;
+    flex-direction: column;
+    margin: 0 7%;
+}
+
+.note_available p {
+    margin: 0;
+    line-height: normal;
+}
+
+.learn_more a {
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    line-height: normal;
+    padding: 5px 41px;
+    font-size: 19px;
+    border-radius: 6px;
+    margin-right: 80px;
+    color: #fff;
+}
+
+.vehicle_info_parent {
+    font-size: 20px;
+    width: 860px;
+    display: flex;
+    align-items: center;
+}
+
+.logo_ {
+    line-height: normal;
+}
+
+.ecm_tcm {
+    display: flex;
+    line-height: normal;
+}
+
+.ecm {
+    margin-right: 50px;
+}
+
+.vehicle_info {
+    border: 1px solid #fff;
+    padding: 10px 6px;
+}
+
+.vehicle_result_parent, ._info {
+    display: none;
+}
+
+.vehicle_form_parent_dis:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: #000;
+    opacity: .5;
+}
+
+.choose_free_product{
+    margin-left: 15px;
+}.choose_free_product_parent{
+    color:red;
+   margin: 15px 0;
+}
+
+.hpt_variation_vin_restriction {
+    display: none;
+    padding-bottom: 0.5rem;
+    color: #ff0000;
+}
+
+.hpt-disabled {
+    background-color: #8a8a8a !important;
+}
+
+/* Sponsorship Form - Css */
+#coupon_form input[type=date], #coupon_form input[type=number], #coupon_form input[type=email] {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    padding: 0.6180469716em;
+}
+
+#areaWrap .chosen-choices, #logo {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 6px;
+    padding: 0.6180469716em;
+}
+
+#tbl_vehicles th:first-child, #tbl_vehicles th:last-child {
+    width: 45px;
+    text-align: center;
+}
+
+#coupon_form td, #coupon_form th {
+    vertical-align: middle;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-vehicle {
+    margin-bottom: 15px;
+    float: right;
+}
+
+#coupon_form .no-padding-l {
+    padding-left: 0;
+}
+
+#coupon_form .no-padding-r {
+    padding-right: 0;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.dashicons-plus {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+a.add-month {
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 15px;
+}
+
+.months-row input {
+    margin-top: 0;
+}
+
+.generate_coupon_code {
+    margin-top: 30px;
+}
+
+#coupon_form select, #coupon_form textarea {
+    margin-top: 6px;
+    margin-bottom: 16px;
+    color: #43454b;
+}
+
+#coupon_form select {
+    padding: 0.6480469716em;
+}
+/* Sponsorship Form - Ends here */
+/* Custom design for Pagination */
+ul.pagination li{
+    list-style-type: none;
+}
+.hpt-table-container ul.pagination
+{
+    justify-content: center;
+}
+
+.hpt-table-container ul.pagination {
+    float: left;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    overflow: unset;
+}
+
+.hpt-table-container ul.pagination li {
+    display: inline-block;
+    background: #fff;
+    margin: 0px;
+    height: 34px;
+    line-height: 2.1;
+}
+
+.hpt-table-container li.disabled {
+    background: #fff;
+    padding: 5px 10px;
+}
+
+.hpt-table-container ul.pagination li.disabled {
+    background: #0f75bd;
+    color: #fff;
+}
+
+.hpt-table-container ul.pagination li a {
+    color: #000000;
+    padding: 10px 20px;
+}
+
+.hpt-table-container ul.pagination li.active a {
+    color: #0f75bd;
+}
+
+.hpt-table-container ul.pagination li a.active {
+    color: #0f75bd;
+}
+
+.hpt-table-container ul.pagination li.active {
+    background: #0f75bd;
+    color: #fff;
+}
+
+.hpt-table-container ul.pagination li.active a {
+    color: #fff;
+}
+
+.hpt-table-container ul.pagination li.disabled a {
+    color: #fff;
+}
+
+.hpt-table-container ul.pagination li:hover {
+    background: #0f75bd;
+}
+
+.hpt-table-container ul.pagination li:hover a {
+    color: #fff;
+}
+
+.hpt-table-container ul.pagination li.disabled, .hpt-table-container ul.pagination li.disabled a {
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    top: 0;
+    height: 35px;
+    line-height: 1.5;
+}
+/* Pagination Ends Here */
+
+.show-loader#device_list_table2:after, .show-loader#device_list_table1:after, .show-loader#credit_transfer_history:after {
+    background-color: rgb(255, 255, 255);
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0.6;
+}
+
+.show-loader#device_list_table2, .show-loader#device_list_table1, .show-loader#credit_transfer_history {
+    position: relative;
+}
+
+@media only screen and (max-width: 1200px) {
+    body .chzn-container-single {
+        width: 150px !important;
+    }
+
+    .vehicle_container > span {
+        font-size: 21px;
+    }
+    .learn_more a {
+        font-size: 15px;
+        margin-right: 0;
+    }
+    .vehicle_result {
+        justify-content: space-between;
+    }
+    .vehicle_info_parent > .logos_parent {
+        margin: 0 35px;
+    }
+    .ecm {
+        margin-right: 25px;
+    }
+    .vehicle_info {
+        font-size: 15px;
+    }
+    .vehicle_info_parent {
+        width: 700px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    body .chzn-container-single {
+        width: 130px !important;
+    }
+
+    .vehicle_container > span {
+        display: none;
+    }
+
+    .vehicle_container {
+        justify-content: space-around;
+    }
+    .vehicle_info_parent {
+        width: 500px;
+    }
+    .vehicle_result {
+        justify-content: right;
+    }
+    .learn_more a {
+        margin-right: 13px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body .chzn-container-single {
+        width: 300px !important;
+        margin-bottom: 5px;
+        display: block;
+    }
+    .vehicle_container {
+        flex-direction: column;
+    }
+    .vehicle_form{
+        margin-top: 20px !important;
+    }
+    .vehicle_form_parent {
+        margin-bottom: 30px;
+        padding-bottom: 0;
+    }
+    #vehicle_button {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .vehicle_form_parent_dis:after {
+        height: 110%;
+    }
+    .vehicle_result {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+    }
+    .learn_more a {
+        margin-right: 0;
+    }
+    .vehicle_info_parent {
+        width: inherit;
+    }
+    .vehicle_info_parent > .logos_parent {
+        margin: 0;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 576px) {
+    .as-help-page .as-help-page__home_preview {
+        min-height: 350px;
+        background-size: contain
+    }
+
+    .as-help-page .as-help-page__gallery {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center
+    }
+
+    .as-help-page .as-help-page__gallery_img {
+        width: 100%;
+        max-width: 30%;
+        height: 200px;
+        object-fit: cover;
+        padding: 0
+    }
+
+    .as-help-page .as-help-page__main_col_image {
+        background-size: contain;
+        min-height: 500px;
+        background-position: center
+    }
+
+    .hpt-table-container ul.pagination {
+        grid-gap: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .as-help-page .as-help-page__main {
+        flex-direction: column
+    }
+
+    .as-help-page .as-help-page__bottom_box .as-help-page__main_col_box_car_info{
+        width: auto;
+    }
+
+    .as-help-page .as-help-page__bottom_box .as-help-page__main_col_box_title {
+        text-align: center;
+    }
+
+    .as-help-page .as-help-page__main_col_image {
+        background-size: contain;
+        min-height: 500px;
+        background-position: center
+    }
+
+    .as-help-page .as-help-page__main_row {
+        flex-direction: row;
+        align-items: flex-start
+    }
+
+    .as-help-page .as-help-page__main_col_box_car_info {
+        width: 100%
+    }
+
+    .as-help-page .as-help-page__main_col_box_title {
+        text-align: left
+    }
+
+    .as-help-page__main {
+        width: 100%;
+        max-width: 750px
+    }
+
+    .as-help-page .as-help-page__home_description {
+        max-width: 900px
+    }
+
+    .as-help-page .as-help-page__gallery {
+        max-width: 900px;
+        margin: 0 auto
+    }
+
+
+}
+
+@media (min-width: 992px) {
+    .as-help-page .as-help-page__main {
+        max-width: 900px
+    }
+
+    .as-help-page .as-help-page__main_title {
+        text-align: left;
+        margin: 10px auto 10px;
+        font-size: 35px
+    }
+
+    .as-help-page .as-help-page__main_col_box_title {
+        font-size: 24px
+    }
+
+    .as-help-page .as-help-page__main_col_box_list_title {
+        font-size: 20px
+    }
+
+    .as-help-page .as-help-page__main_col_box_list_subtitle {
+        font-size: 18px
+    }
+
+    .as-help-page .as-help-page__home_title {
+        text-align: left
+    }
+
+    .as-help-page .as-help-page__container {
+        width: 100%;
+        max-width: 900px
+    }
+
+    .as-help-page .as-help-page__main_col_image {
+        min-height: 650px;
+        background-size: cover
+    }
+}
+
+@media (min-width: 1200px) {
+    .as-help-page .as-help-page__container {
+        max-width: 1200px;
+        padding: 30px;
+        width: 100%;
+        box-sizing: border-box
+    }
+
+    .as-help-page .as-help-page__home_preview {
+        background-size: cover
+    }
+
+    .as-help-page .as-help-page__home_description {
+        max-width: 1200px
+    }
+
+    .as-help-page .as-help-page__main {
+        max-width: 1200px
+    }
+
+    .as-help-page .as-help-page__gallery {
+        max-width: 1200px
+    }
+
+    .as-help-page .as-help-page__home_preview {
+        min-height: 450px;
+        background-size: cover
+    }
+
+    .as-help-page .as-help-page__main_col_box_row {
+        padding-left: 50px
+    }
+}
+
+
+.scrolling-table.custom-scroll::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrolling-table.custom-scroll::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+    border-radius: 12px;
+}
+
+.scrolling-table.custom-scroll::-webkit-scrollbar-thumb
+{
+    border-radius: 12px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+.scrolling-table.custom-scroll{
+    scrollbar-color:  rgba(0,0,0,0.3) #F5F5F5;
+    scrollbar-width: thin;
+}
+.hpt_form_bank-container.rm-margin{
+    margin-bottom: 0px;
+}
+
+.calibration-type-wrap { margin-bottom: 30px; }
+.calibration-type-wrap #calibration { max-width: 70%; display: block; height: 48px; margin-top: 6px; }
+.page-polaris-mg1-ecm-service .calibration-type-wrap #calibration { margin-top: 0; margin-left: 10px; max-width: 300px; }
+.page-polaris-mg1-ecm-service .calibration-type-wrap { display: flex; justify-content: flex-end; align-items: center; }
+.page-polaris-mg1-ecm-service.single-product .product .product_meta { display:none; text-align: right; padding-top: 0; padding-bottom:1em; }
+@media (max-width: 567px) {.page-polaris-mg1-ecm-service .calibration-type-wrap { flex-flow: wrap; }}
+@media (min-width: 768px) {.page-polaris-mg1-ecm-service div.product .summary { margin-bottom:0 !important; }}
+.clr-filter-txt { padding-top: 10px; }
+
+
+.hpt-mydevices-ajax .dataTables_wrapper .dataTables_paginate .paginate_button,
+.hpt-mydevices-ajax .dataTables_wrapper div.dataTables_paginate,
+.hpt-mydevices-ajax .hpt-table-container .dataTables_wrapper .dataTables_info,
+.hpt-mydevices-ajax div.dataTables_filter,
+.hpt-mydevices-ajax .hpt-table-container .dataTables_wrapper div.dataTables_paginate,
+.credit_transfer_history_container .dataTables_wrapper .dataTables_paginate .paginate_button,
+.credit_transfer_history_container .dataTables_wrapper div.dataTables_paginate,
+.credit_transfer_history_container .dataTables_wrapper .dataTables_info,
+.credit_transfer_history_container div.dataTables_filter,
+.credit_transfer_history_container .hpt-table-container .dataTables_wrapper div.dataTables_paginate
+{
+    color: #fff !important;
+}
+
+.hpt-mydevices-ajax h4, table.hpt-table.dataTable h4 {
+    text-align: center;
+}
+
+.hpt-mydevices-ajax div.dataTables_length, div#credit_transfer_history_length {
+    font-size: 0;
+    margin-bottom: 20px;
+}
+
+.hpt-mydevices-ajax div.dataTables_length select, div#credit_transfer_history_length select {
+    font-size: 16px;
+    padding: 10px 10px;
+}
+
+.hpt-mydevices-ajax table.hpt-table.dataTable, .credit_transfer_history_container table.hpt-table.dataTable {
+    margin-bottom: 10px;
+}
+
+.hpt-mydevices-ajax .dataTables_wrapper .dataTables_filter input, .credit_transfer_history_container .dataTables_wrapper .dataTables_filter input {
+    margin-right: 0 !important;
+    border-radius: 5px;
+    padding: 10px 20px;
+    line-height: 24px;
+}
+
+.hpt-mydevices-ajax .hpt-table-container .dataTables_wrapper .dataTables_paginate .paginate_button:not(.disabled):hover, .credit_transfer_history_container .hpt-table-container .dataTables_wrapper .dataTables_paginate .paginate_button:not(.disabled):hover {
+    color: #111 !important;
+    border: 1px solid #111;
+    background-color: #585858;
+    background: #ffff;
+}
+
+.hpt-mydevices-ajax h4, .credit_transfer_history_container h4 {
+    text-align: center;
+    background-color: #fff;
+    color: #0f75bd;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.hpt-mydevices-ajax-inner {
+    margin-top: 30px;
+    padding: 10px;
+    border: #0f75bd 2px solid;
+    border-radius: 5px;
+}
+.form-row.pobox-error input.input-text {
+    box-shadow: inset 2px 0 0 #e2401c !important;
+}
+
+.credit_transfer_history_container .scrolling-table {
+    max-height: none;
+    padding: 20px;
+}

@@ -1,0 +1,754 @@
+@charset "UTF-8";
+
+/* =========================================
+   全局变量设置：CYBERPUNK SPEED THEME
+   ========================================= */
+:root {
+    /* 核心色板 */
+    --color-neon: #00FF41;        /* 核心识别色：黑客绿/荧光绿 */
+    --color-neon-hover: #39FF14;  /* 更亮的绿色 */
+    --color-dark-bg: #050505;     /* 极致深黑背景 */
+    --color-panel-bg: #111111;    /* 板块背景色 */
+    --color-card-bg: #1A1A1A;     /* 卡片背景 */
+    --color-border: #333333;      /* 边框色 */
+    --color-text-main: #FFFFFF;
+    --color-text-mute: #888888;
+    --color-danger: #FF003C;      /* 赛博朋克红 */
+    
+    --font-main: 'Montserrat', sans-serif;
+    --font-tech: 'Rajdhani', sans-serif; /* 增加科技感字体 */
+}
+
+/* 基础重置 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+    padding-top: 45px; /* Space for fixed promo bar */
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.text-center { text-align: center; }
+.section-title {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+}
+
+/* =========================================
+   按钮组件 (Neon Style)
+   ========================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.btn-neon {
+    background-color: var(--color-neon);
+    color: black;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); /* 赛博切角 */
+}
+.btn-neon:hover {
+    background-color: var(--color-neon-hover);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: white;
+    border-radius: 4px;
+}
+.btn-outline:hover {
+    border-color: var(--color-neon);
+    color: var(--color-neon);
+}
+
+.btn-small { padding: 8px 24px; font-size: 14px; }
+.btn-large { padding: 18px 48px; font-size: 18px; }
+.btn-glow { box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); }
+
+/* =========================================
+   Promo Bar
+   ========================================= */
+.promo-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-bottom: 1px solid var(--color-danger);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    font-weight: 800;
+    font-size: 14px;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(255, 0, 60, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.promo-text h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: white;
+    font-family: var(--font-tech);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.promo-highlight {
+    color: var(--color-danger);
+    margin: 0 5px;
+    text-shadow: 0 0 5px rgba(255, 0, 60, 0.3);
+}
+
+.countdown-timer {
+    font-family: var(--font-tech);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-danger);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin: 5px 0;
+    text-shadow: 0 0 10px rgba(255, 0, 60, 0.4);
+}
+
+/* Floating Promo Card */
+.floating-promo-card {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 320px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid var(--color-neon);
+    padding: 20px;
+    z-index: 9999;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+    animation: slideInBottom 1s ease-out 1s backwards;
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-promo-card .close-promo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+.floating-promo-card .close-promo:hover { color: white; }
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.promo-icon-box {
+    font-size: 24px;
+    color: var(--color-danger);
+}
+
+.promo-text p {
+    font-size: 13px;
+    color: white;
+    line-height: 1.3;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+@keyframes slideInBottom {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   1. 导航栏
+   ========================================= */
+.top-banner {
+    background-color: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 15px 0;
+    position: sticky;
+    top: 42px; /* Stick below promo bar */
+    z-index: 1000;
+}
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { height: 60px; }
+
+/* =========================================
+   2. HERO 区域 (重构版)
+   ========================================= */
+.hero-section {
+    position: relative;
+    padding: 120px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-dark-bg);
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.6; /* 稍微调暗，透出底色 */
+    /* 移除滤镜 filter: grayscale(100%) contrast(1.2); */
+}
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 科技网格遮罩 */
+.hero-overlay-grid {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    background-image: 
+        linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center top;
+    pointer-events: none; /* 确保不阻挡交互 */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-start; /* 左对齐 */
+    width: 100%; /* 确保占满容器宽度 */
+}
+
+.hero-text-wrapper {
+    text-align: left;
+    max-width: 650px;
+    margin-left: 0; /* 确保靠左 */
+}
+
+.hero-title {
+    font-size: 100px; /* 极大字号 */
+    line-height: 0.9;
+    font-weight: 900;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: white; /* 纯白色 */
+}
+
+.hero-title-sub {
+    font-size: 60px; /* 稍微小一点做陪衬 */
+    color: white;
+}
+
+.text-neon { color: var(--color-neon); }
+.text-white { color: white; border-bottom: 2px solid var(--color-neon); }
+.text-highlight { 
+    color: white; 
+    font-weight: 900; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Glitch Effect - 故障文字 */
+.glitch-text { position: relative; display: inline-block; }
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--color-dark-bg);
+}
+.glitch-text::before {
+    left: 2px; text-shadow: -1px 0 red; clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: -2px; text-shadow: -1px 0 blue; clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 30px, 0); }
+    20% { clip: rect(80px, 9999px, 10px, 0); }
+    100% { clip: rect(30px, 9999px, 90px, 0); }
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: #ccc;
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+.hero-micro-copy { margin-top: 15px; font-size: 13px; color: #666; font-family: var(--font-tech); text-transform: uppercase; letter-spacing: 1px;}
+
+/* =========================================
+   3. SPECS BAR (新增性能条)
+   ========================================= */
+.specs-bar {
+    background: #000;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 30px 0;
+    position: relative;
+    z-index: 10;
+}
+.specs-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+.spec-item { text-align: center; }
+.spec-value {
+    font-family: var(--font-tech);
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+.spec-label { color: var(--color-neon); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.spec-divider { width: 1px; height: 40px; background: #333; }
+
+/* =========================================
+   4. FEATURES (核心组件)
+   ========================================= */
+.features-section { padding: 100px 0; background-color: var(--color-dark-bg); }
+
+.feature-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-box {
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-border);
+    padding: 40px 30px;
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-box:hover {
+    border-color: var(--color-neon);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+}
+
+.feature-icon { font-size: 32px; color: var(--color-neon); margin-bottom: 20px; }
+.feature-box h3 { font-size: 18px; color: white; margin-bottom: 15px; font-weight: 700; text-transform: uppercase; }
+.feature-box p { font-size: 14px; color: #888; line-height: 1.6; }
+
+/* =========================================
+   5. COMPARISON (碾压对比)
+   ========================================= */
+.comparison-section { padding: 80px 0; background: #000; }
+
+.comparison-container {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    position: relative;
+}
+
+.compare-card {
+    flex: 1;
+    background: var(--color-panel-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 状态标签 */
+.card-header-status {
+    padding: 10px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.status-bad { background: #220000; color: var(--color-danger); }
+.status-good { background: rgba(0, 255, 65, 0.1); color: var(--color-neon); }
+
+.traditional { border-top: 4px solid var(--color-danger); opacity: 0.7; }
+.tunerpad { border: 1px solid var(--color-neon); box-shadow: 0 0 30px rgba(0, 255, 65, 0.05); transform: scale(1.02); z-index: 2; }
+
+.card-image { height: 200px; overflow: hidden; border-bottom: 1px solid var(--color-border); }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+.traditional .card-image img { filter: grayscale(100%) sepia(50%) hue-rotate(-50deg); } /* 让旧软件看起来发红陈旧 */
+
+.card-content { padding: 30px; }
+.card-content h3 { font-size: 24px; margin-bottom: 20px; text-align: center; color: white; }
+
+.compare-item {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 15px; font-size: 15px; color: #ccc;
+}
+.cross-icon { color: var(--color-danger); font-weight: bold; }
+.check-icon { color: var(--color-neon); font-weight: bold; }
+
+.vs-badge {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    background: #000; border: 2px solid #333; color: #fff;
+    width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; font-weight: 900; font-style: italic; z-index: 10;
+    overflow: hidden; /* 确保图片不溢出圆角 */
+}
+
+.vs-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 完美填充 */
+}
+
+/* =========================================
+   6. SECURITY & SOCIAL PROOF (Dark Mode)
+   ========================================= */
+.security-hub-section { padding: 100px 0; background: var(--color-dark-bg); }
+.hub-container {
+    max-width: 1000px; /* 加宽容器以容纳更宽的卡片 */
+    margin: 0 auto; 
+    position: relative; 
+    height: 600px; /* 增加高度 */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.shield-text h3 { color: white; font-size: 24px; margin-bottom: 10px; }
+.shield-text p { color: #666; }
+
+.review-card {
+    position: absolute; 
+    width: 320px; /* 卡片加宽 */
+    background: rgba(10, 10, 10, 0.95); /* 极深背景，微透 */
+    backdrop-filter: blur(10px);
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 4px;
+    z-index: 5;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
+
+/* 企业卡片样式 */
+.enterprise-card {
+    border-left-width: 4px; /* 左侧加粗边框 */
+}
+
+/* 不同类型企业的颜色代码 */
+.border-blue { border-left-color: #00A8FF; } /* 赛车队 */
+.border-red { border-left-color: #FF003C; } /* 研发 */
+.border-gold { border-left-color: #FFD700; } /* 连锁 */
+.border-green { border-left-color: var(--color-neon); } /* 安全 */
+
+/* === 品牌 Logo 区域优化 === */ 
+.brand-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-bottom: 15px; 
+    padding-bottom: 12px; 
+    border-bottom: 1px solid rgba(255,255,255,0.05); 
+} 
+
+/* 模拟 Logo 图标容器 */ 
+.brand-logo { 
+    width: 36px; 
+    height: 36px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 6px; /* 方形圆角，看起来像APP图标或企业Logo */ 
+    font-size: 18px; 
+    flex-shrink: 0; 
+} 
+
+/* 品牌名称排版 */ 
+.brand-name { 
+    font-family: 'Montserrat', sans-serif; /* 用非衬线体 */ 
+    font-weight: 800; 
+    color: #fff; 
+    font-size: 15px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    line-height: 1.2; 
+} 
+
+/* --- 为每个品牌定制 Logo 颜色，看起来像不同的公司 --- */ 
+
+/* 1. Vertex (赛车队) - 碳纤维黑/红 */ 
+.pos-top-left .brand-logo { 
+    background: linear-gradient(135deg, #333, #000); 
+    color: #fff; 
+    border: 1px solid #444; 
+} 
+
+/* 2. Redline (实验室) - 科技红 */ 
+.pos-top-right .brand-logo { 
+    background: rgba(255, 0, 60, 0.15); 
+    color: #ff003c; 
+    border: 1px solid rgba(255, 0, 60, 0.3); 
+} 
+
+/* 3. Alpha (全球连锁) - 商务蓝 */ 
+.pos-bottom-left .brand-logo { 
+    background: rgba(0, 200, 255, 0.15); 
+    color: #00c8ff; 
+    border: 1px solid rgba(0, 200, 255, 0.3); 
+} 
+
+/* 4. Titan (安全技术) - 品牌绿 */ 
+.pos-bottom-right .brand-logo { 
+    background: rgba(0, 255, 65, 0.15); 
+    color: var(--color-neon); 
+    border: 1px solid rgba(0, 255, 65, 0.3); 
+}
+
+.review-content { 
+    color: #ccc; 
+    font-style: normal; /* 取消斜体 */
+    font-size: 14px; 
+    margin-bottom: 20px; 
+    line-height: 1.6;
+}
+
+.author-info { 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end; /* 署名靠右 */
+}
+
+.review-author { 
+    color: #666; 
+    font-weight: 600; 
+    font-size: 12px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 位置调整 - 稍微外扩以适应更大的中心区域 */
+.pos-top-left { top: 0; left: 0; }
+.pos-bottom-right { bottom: 0; right: 0; }
+.pos-top-right { top: 0; right: 0; }
+.pos-bottom-left { bottom: 0; left: 0; }
+
+/* 移除不再需要的 pos-mid-right */
+.pos-mid-right { display: none; }
+
+/* =========================================
+   7. PRICING (Dark Mode)
+   ========================================= */
+.pricing-section { padding: 80px 20px; }
+.pricing-toggle-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; align-items: center; }
+.toggle-pill { background: #222; padding: 4px; border-radius: 30px; display: flex; }
+.toggle-option { padding: 8px 20px; border-radius: 20px; cursor: pointer; color: #888; font-size: 14px; font-weight: 600; }
+.toggle-option.active { background: var(--color-neon); color: black; }
+.save-badge { color: var(--color-neon); font-size: 12px; font-weight: bold; }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.price-card {
+    background: var(--color-panel-bg); border: 1px solid var(--color-border);
+    padding: 40px 30px; text-align: center; position: relative;
+}
+.price-card.popular { border-color: var(--color-neon); background: rgba(0, 255, 65, 0.02); }
+.popular-tag {
+    position: absolute; top: 0; left: 0; width: 100%;
+    background: var(--color-neon); color: black; font-size: 12px; font-weight: 800; padding: 5px 0;
+}
+
+.card-plan-name { color: white; font-size: 20px; margin-bottom: 20px; margin-top: 10px; }
+.price-tag { font-size: 40px; color: white; font-weight: 700; margin-bottom: 30px; }
+.period { font-size: 16px; color: #666; font-weight: 400; }
+
+.price-features p { color: #999; margin-bottom: 10px; font-size: 14px; }
+.price-features .highlight { color: white; font-weight: bold; }
+
+.pricing-btn {
+    display: inline-block; width: 100%; padding: 12px; margin-top: 20px;
+    font-weight: 700; text-transform: uppercase; font-size: 14px;
+}
+.btn-neon-solid { background: var(--color-neon); color: black; }
+.btn-neon-solid:hover { background: var(--color-neon-hover); }
+
+/* =========================================
+   8. FOOTER CTA & FOOTER
+   ========================================= */
+.footer-cta-section { padding: 100px 0; text-align: center; }
+.cta-box {
+    background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+    border: 1px solid #333;
+    max-width: 900px; margin: 0 auto; padding: 80px 40px;
+    position: relative; overflow: hidden;
+}
+/* 增加绿色光晕装饰 */
+.cta-box::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(0,255,65,0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cta-box h2 { font-size: 48px; color: white; margin-bottom: 20px; font-weight: 900; }
+.cta-subtitle { font-size: 18px; color: #888; margin-bottom: 40px; }
+
+.main-footer { padding: 40px 0; border-top: 1px solid #222; font-size: 14px; color: #666; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; }
+.footer-left { display: flex; align-items: center; gap: 15px; }
+.footer-logo { height: 45px; width: auto; } /* 限制Logo高度 */
+.footer-links a { margin-left: 20px; color: #666; transition: color 0.3s; }
+.footer-links a:hover { color: var(--color-neon); }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .hero-title { font-size: 42px; }
+    .feature-grid-4, .pricing-grid { grid-template-columns: 1fr; }
+    .comparison-container, .specs-grid { flex-direction: column; }
+    .spec-divider { display: none; }
+    .spec-item { margin-bottom: 20px; }
+    .footer-content { flex-direction: column; gap: 20px; }
+    .hub-container { height: auto; padding-bottom: 50px; }
+    .review-card { position: static; width: 100%; margin-top: 20px; }
+}
+/* =========================================
+   NEW: VELOCITY ENGINE (纯CSS极速引擎)
+   替换原来的盾牌图片
+   ========================================= */
+
+.speed-engine-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 30px auto 0; /* 居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 增加透视感，让引擎看起来更立体 */
+    perspective: 1000px; 
+}
+
+/* --- 1. 核心能量球 (脉冲) --- */
+.engine-core {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #fff 0%, var(--color-neon) 40%, transparent 80%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--color-neon), 0 0 60px var(--color-neon);
+    z-index: 10;
+    animation: core-pulse 0.8s infinite alternate; /* 快速脉冲 */
+}
+
+/* --- 2. 旋转圆环 (涡轮叶片) --- */
+.engine-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+}
+
+/* 外圈 */
+.ring-outer {
+    width: 100%;
+    height: 100%;
+    /* 顶部和底部亮，形成开口环效果 */
+    border-top: 4px solid var(--color-neon);
+    border-bottom: 4px solid var(--color-neon);
+    /* 左右虚线 */
+    border-left: 2px dashed rgba(0, 255, 65, 0.3);
+    border-right: 2px dashed rgba(0, 255, 65, 0.3);
+    
+    animation: spin-right 2s linear infinite; /* 顺时针旋转 */
+}
+
+/* 内圈 */
+.ring-inner {
+    width: 70%;
+    height: 70%;
+    border-left: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    
+    animation: spin-left 1.5s linear infinite; /* 逆时针旋转 */
+}
+
+/* --- 3. 装饰：向外发散的速度线 --- */
+.speed-engine-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%; height: 140%;
+    background: radial-gradient(circle, transparent 60%, rgba(0,255,65,0.05) 70%);
+    border: 1px solid rgba(0,255,65,0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: radar-ripple 1.5s infinite ease-out;
+}
+
+/* --- 动画定义 --- */
+
+/* 核心呼吸 */
+@keyframes core-pulse {
+    0% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 20px var(--color-neon); }
+    100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 50px var(--color-neon), 0 0 80px var(--color-neon); }
+}
+
+/* 顺时针旋转 */
+@keyframes spin-right {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 逆时针旋转 */
+@keyframes spin-left {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* 扩散波纹 */
+@keyframes radar-ripple {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
