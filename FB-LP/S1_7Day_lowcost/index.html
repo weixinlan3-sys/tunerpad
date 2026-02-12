@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿<!doctype html>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!doctype html>
 <html lang="en-US">
 <head>
 	<!-- Google Tag Manager -->
@@ -848,8 +848,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="mainSect">
-				<video playsinline autoplay muted loop poster="" id="bgvid">
-					<source src="static/video/hero.mp4" type="video/mp4">
+				<video playsinline autoplay muted loop poster="static/video/poster.jpg" id="bgvid">
+					<source src="static/video/hero_compressed.mp4" type="video/mp4">
+					<source src="static/video/hero.webm" type="video/webm">
 				</video>
 				<div class="content-home">
 					<h1 class="hero-title">WE CUT THE COST. <br>YOU KEEP THE PROFIT.</h1>
@@ -945,6 +946,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="fourthSect section section-full-in-col-full" style="background-color: #FDC700;">
 					<div class="hero" style="position: relative;">
 						<picture>
+							<source srcset="static/images/computer.webp" type="image/webp">
 							<source media="(min-width:800px)" srcset="static/images/computer.jpg" width="100%" height="700">
 							<img src="static/images/computer.jpg" alt="HPT Family" width="1200" height="800">
 						</picture>
@@ -1288,7 +1290,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="col-full" style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; width: 100% !important; max-width: 100% !important;">
         <div class="site-info" style="text-align: center !important; padding: 0; width: 100% !important; height: auto !important; line-height: normal !important; float: none !important; display: flex !important; flex-direction: column !important; align-items: center !important;">
             <div class="footer-image" style="margin-bottom: 15px; width: 100%; display: flex; justify-content: center;">
-                <img alt="TunerPad Logo" src="static/images/logo-black.png" style="max-width: 120px; height: auto; display: block; opacity: 0.6;"/>
+                <picture>
+                    <source srcset="static/images/logo-black.webp" type="image/webp">
+                    <img alt="TunerPad Logo" src="static/images/logo-black.png" style="max-width: 120px; height: auto; display: block; opacity: 0.6;"/>
+                </picture>
             </div>
             <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; width: 100%;">
                 <a href="#" style="color: #666; text-decoration: none; font-size: 0.8em; transition: color 0.3s ease;">General Terms and Conditions</a>

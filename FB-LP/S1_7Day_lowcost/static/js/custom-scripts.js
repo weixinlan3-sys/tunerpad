@@ -121,7 +121,9 @@ window.addEventListener('scroll',(e) => {
   }
 });
 
-scrollToTopBtn.addEventListener("click", scrollToTop);
+if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener("click", scrollToTop);
+}
 
 function scrollToTop() {
   window.scrollTo({
