@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MNQFZS9B');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video End Card</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Gradient background similar to the reference image */
+            background: linear-gradient(135deg, #001f54 0%, #007bff 100%);
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .card-container {
+            width: 1080px;
+            height: 1080px; /* Square format for Instagram/Facebook feed */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Add a subtle white border to mimic the screenshot's edge if desired, or remove */
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Logo Box */
+        .logo-box {
+            /* Removed white background for transparency */
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            margin-bottom: 60px;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img {
+            /* Adjusted size for the logo */
+            height: 80px;
+            width: auto;
+            /* Ensure it's visible on dark background */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        /* Main Headline Text (Yellow) */
+        .headline {
+            font-size: 110px;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #FFD700; /* Bright Yellow */
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        /* Sub Headline Text (White) */
+        .sub-headline {
+            font-size: 64px;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 100px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        /* Red Button */
+        .cta-button {
+            background-color: #ff0000; /* Bright Red */
+            color: white;
+            font-size: 60px;
+            font-weight: 900;
+            padding: 30px 80px;
+            border-radius: 100px; /* Pill shape */
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: none;
+            letter-spacing: 2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- Logo Box -->
+        <div class="logo-box">
+            <!-- Updated to use the actual logo image -->
+            <img src="image/logo-white.webp" alt="TunerPad Logo" class="logo-img">
+        </div>
+
+        <!-- Headline: ONE-CLICK DTC OFF -->
+        <div class="headline">
+            ONE-CLICK<br>
+            DTC OFF
+        </div>
+
+        <!-- Sub Headline: V2 BETA ACCESS -->
+        <div class="sub-headline">
+            V2 BETA ACCESS
+        </div>
+
+        <!-- Red Button: JOIN WAITLIST NOW -->
+        <button class="cta-button">
+            JOIN WAITLIST NOW
+        </button>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,352 @@
+/* Top Banner */
+.top-banner {
+    background-color: var(--brand-darker);
+    color: var(--white);
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 100px 0;
+    background-color: #f8f9fa; /* Slightly different from white */
+    text-align: center;
+}
+.pricing-card-wrapper {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 48px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid #e6e7eb;
+}
+.price-large {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin: 16px 0 8px;
+    line-height: 1;
+}
+.price-period {
+    font-size: 18px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+.pricing-sub {
+    color: var(--text-main);
+    margin-bottom: 32px;
+    font-size: 16px;
+}
+.beta-progress {
+    margin-top: 24px;
+    text-align: left;
+}
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.progress-container {
+    height: 10px;
+    background: #eef2f6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: var(--brand-primary);
+    width: 86%;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 16, 89, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background: var(--white);
+    padding: 48px;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+}
+.modal-close:hover { color: var(--text-dark); }
+
+.modal-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-dark);
+    margin-bottom: 16px;
+}
+.modal-desc {
+    color: var(--text-main);
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+.modal-form .form-input {
+    margin-bottom: 16px;
+    padding: 14px 16px;
+}
+.btn-submit {
+    background-color: #FFD700; /* Yellow */
+    color: var(--brand-dark);
+    font-weight: 700;
+    width: 100%;
+    border: none;
+}
+.btn-submit:hover {
+    background-color: #ffca28;
+}
+
+/* --- Pricing V2 (Light Theme - TunerPad Original) --- */
+.pricing-section-v2 {
+    background-color: var(--bg-light); /* Light background */
+    color: var(--text-main);
+    padding: 80px 0;
+}
+
+.pricing-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.pricing-toggle {
+    background: #e6e7eb;
+    padding: 4px;
+    border-radius: 50px;
+    display: inline-flex;
+    position: relative;
+}
+
+.toggle-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+    background: var(--brand-primary);
+    color: var(--white);
+    font-weight: 700;
+}
+
+.save-badge {
+    color: var(--success-green);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 32px;
+    border: 1px solid #e6e7eb;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card.popular {
+    border: 2px solid var(--brand-primary);
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--brand-primary);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--brand-dark);
+}
+
+.card-price {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.currency {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--brand-primary);
+}
+
+.period {
+    font-size: 16px;
+    color: var(--text-main);
+    font-weight: 400;
+}
+
+.billing-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 32px;
+    height: 20px; /* Prevent layout shift */
+}
+
+.features-list {
+    margin-bottom: 32px;
+    flex-grow: 1;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.check-icon { color: var(--success-green); font-weight: bold; }
+.cross-icon { color: #f55656; font-weight: bold; }
+
+.card-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.card-btn.btn-gray {
+    background: #e6e7eb;
+    color: var(--text-dark);
+}
+.card-btn.btn-gray:hover { background: #dcdde0; }
+
+.card-btn.btn-yellow {
+    background: var(--brand-primary);
+    color: var(--white);
+}
+.card-btn.btn-yellow:hover { background: var(--brand-primary-hover); }
+
+/* --- Hardware Support (Logo Wall) --- */
+.hardware {
+    padding: 60px 0;
+    background: var(--white);
+    border-top: 1px solid #e6e7eb;
+    text-align: center;
+}
+
+/* --- Safety & Success Section --- */
+.safety-section {
+    padding: 80px 0;
+    background-color: var(--white);
+    border-top: 1px solid #e6e7eb;
+}
+.safety-grid {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+}
+.safety-visual {
+    flex: 1;
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+}
+.safety-content {
+    flex: 1;
+}
+.stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid #e6e7eb;
+}
+.stat-item h4 {
+    font-size: 32px;
+    color: var(--brand-primary);
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+.stat-item p {
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+@media (max-width: 992px) {
+    .safety-grid { flex-direction: column-reverse; gap: 40px; }
+}
+
+/* --- Footer CTA (暗色底部) --- */
