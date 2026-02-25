@@ -627,6 +627,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     .then(response => {
                         form.style.display = 'none';
                         if (successMsg) successMsg.style.display = 'block';
+
+                        // GTM Data Layer Push
+                        if (window.dataLayer) {
+                            window.dataLayer.push({ 
+                                'event': 'lead_submitted', 
+                                'form_type': 'v2_beta_waitlist' 
+                            });
+                        }
                     })
                     .catch(error => {
                         console.error('Error!', error.message);

@@ -988,6 +988,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     btn.style.color = 'white';
                     
                     // GTM Event Trigger
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ 
+                        'event': 'lead_submitted', 
+                        'form_type': 'v2_beta_waitlist' 
+                    });
                     console.log('GTM Event: waitlist_signup', { email: email });
                     
                     setTimeout(() => {
