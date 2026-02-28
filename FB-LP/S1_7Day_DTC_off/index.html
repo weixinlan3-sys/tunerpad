@@ -556,6 +556,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         
         const monthlyOnlyElements = document.querySelectorAll('.monthly-only');
         const yearlyOnlyElements = document.querySelectorAll('.yearly-only');
+        const essentialCard = document.querySelector('.essential-card');
 
         toggleSwitch.addEventListener('change', function(e) {
             // Update amounts
@@ -583,9 +584,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             if (e.target.checked) { // Yearly
                 monthlyOnlyElements.forEach(el => el.style.display = 'none');
                 yearlyOnlyElements.forEach(el => el.style.display = 'block');
+                if (essentialCard) essentialCard.classList.add('yearly-mode');
             } else { // Monthly
                 monthlyOnlyElements.forEach(el => el.style.display = ''); 
                 yearlyOnlyElements.forEach(el => el.style.display = 'none');
+                if (essentialCard) essentialCard.classList.remove('yearly-mode');
             }
 
             // Update button links and text

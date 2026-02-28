@@ -584,11 +584,26 @@ input:checked + .slider:before { transform: translateX(24px); }
     position: relative;
     overflow: visible;
     padding: 24px 20px !important; /* Compact padding */
+    transition: padding 0.3s;
+}
+
+.essential-card.yearly-mode {
+    padding: 40px 32px !important; /* Restore standard padding for yearly mode */
 }
 
 .essential-card .card-header h3 {
     margin-bottom: 8px;
     font-size: 18px;
+}
+
+.essential-card.yearly-mode .card-header h3 {
+    margin-bottom: 16px; /* Restore standard margin */
+    font-size: 20px; /* Restore standard font size */
+}
+
+.essential-card.yearly-mode .features-list {
+    margin-bottom: 32px; /* Restore standard margin */
+    padding-top: 24px; /* Restore standard padding */
 }
 
 .fb-special-tag {
