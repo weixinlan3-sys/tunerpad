@@ -31,10 +31,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="top-banner">
         <div class="container nav-content">
             <div class="logo-area">
-                <picture>
-                    <source srcset="picture/logo-black.webp" type="image/webp">
-                    <img src="image/logo-black.png" alt="TunerPad" class="nav-logo" loading="lazy">
-                </picture>
+                <a href="https://tunerpad.com/">
+                    <picture>
+                        <source srcset="picture/logo-black.webp" type="image/webp">
+                        <img src="image/logo-black.png" alt="TunerPad" class="nav-logo" loading="lazy">
+                    </picture>
+                </a>
             </div>
             
             <div class="nav-actions">
@@ -62,7 +64,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </h2>
                 
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-large btn-neon btn-glow">
+                    <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn btn-large btn-neon btn-glow">
                         <i class="fas fa-power-off"></i> START TUNING - ZERO LAG
                     </a>
                 </div>
@@ -177,14 +179,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="security-hub-section">
         <div class="hub-container">
            <div class="hub-center">
-    <div class="shield-text">
-        <h3 style="color: #fff; text-shadow: 0 0 10px rgba(0,255,65,0.5);">TRUSTED BY EXPERTS</h3>
-        <p style="color: #aaa;">
-            Powering thousands of independent garages and<br>
-            <span style="color: var(--color-neon);">Professional Tuning Shops.</span>
-        </p>
-    </div>
-
     <div class="speed-engine-wrapper">
         <div class="engine-ring ring-outer"></div> <div class="engine-ring ring-inner"></div> <div class="engine-core"></div>            <div class="speed-lines"></div>
     </div>
@@ -265,7 +259,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>✓ Tuning Editor Features</p>
                     <p>✓ DAMOS Import</p>
                 </div>
-                <a href="#" class="pricing-btn btn-outline">Start Basic</a>
+                <a href="#" id="btn-plan-basic" class="pricing-btn btn-outline">Start Basic</a>
             </div>
 
             <div class="price-card popular">
@@ -308,7 +302,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>✓ Tuning Editor Features</p>
                     <p>✓ DAMOS Import</p>
                 </div>
-                <a href="#" class="pricing-btn btn-gold">START FREE TRIAL</a>
+                <a href="#" id="btn-plan-essential" class="pricing-btn btn-gold">START FREE TRIAL</a>
             </div>
 
             <div class="price-card">
@@ -325,7 +319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>✓ Tuning Editor Features</p>
                     <p>✓ DAMOS Import</p>
                 </div>
-                <a href="#" class="pricing-btn btn-outline">Go Premium</a>
+                <a href="#" id="btn-plan-premium" class="pricing-btn btn-outline">Go Premium</a>
             </div>
         </div>
     </section>
@@ -336,17 +330,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="cta-subtitle">
                 Join the revolution. Stop waiting for progress bars.
             </p>
-            <a href="#" class="btn btn-large btn-neon btn-glow cta-btn">UNLEASH THE BEAST</a>
+            <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn btn-large btn-neon btn-glow cta-btn">UNLEASH THE BEAST</a>
         </div>
     </section>
 
     <footer class="main-footer">
         <div class="container footer-content">
             <div class="footer-left">
-                <picture>
-                    <source srcset="picture/logo-black.webp" type="image/webp">
-                    <img src="image/logo-black.png" alt="TunerPad Logo" class="footer-logo" loading="lazy">
-                </picture>
+                <a href="https://tunerpad.com/">
+                    <picture>
+                        <source srcset="picture/logo-black.webp" type="image/webp">
+                        <img src="image/logo-black.png" alt="TunerPad Logo" class="footer-logo" loading="lazy">
+                    </picture>
+                </a>
                 <span class="copyright">© 2026 Novasnap Technology Ltd.</span>
             </div>
             <div class="footer-links">
@@ -368,7 +364,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p style="margin-top: 5px;">7-Day Free Trial. Ends in 48h. Only 14 spots left.</p>
             </div>
         </div>
-        <a href="#" class="btn-block btn-neon">START FREE TRIAL</a>
+        <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn-block btn-neon">START FREE TRIAL</a>
     </div>
 
     <script>
@@ -420,6 +416,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const amounts = document.querySelectorAll('.amount');
             const billingInfos = document.querySelectorAll('.billed-info');
             
+            const btnPlanBasic = document.getElementById('btn-plan-basic');
+            const btnPlanEssential = document.getElementById('btn-plan-essential');
+            const btnPlanPremium = document.getElementById('btn-plan-premium');
+
+            const links = {
+                basic: {
+                    monthly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwS0qi6o083yp&pk=tp_basic_monthly",
+                    yearly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_T70BpPXregSnuL&pk=tp_basic_yearly"
+                },
+                essential: {
+                    monthly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7",
+                    yearly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_T70Cn3lzoLPmCt&pk=tp_essential_yearly"
+                },
+                premium: {
+                    monthly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_SbwUKKwj0xJNfh&pk=tp_premium_monthly",
+                    yearly: "https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_fast&pid=prod_T70ChYy5da43fi&pk=tp_premium_yearly"
+                }
+            };
+
             function updatePricing(isYearly) {
                 amounts.forEach(amount => {
                     amount.innerHTML = isYearly ? amount.getAttribute('data-yearly') : amount.getAttribute('data-monthly');
@@ -428,6 +443,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     info.innerHTML = isYearly ? info.getAttribute('data-yearly') : info.getAttribute('data-monthly');
                 });
                 
+                // Update links
+                if (btnPlanBasic) btnPlanBasic.href = isYearly ? links.basic.yearly : links.basic.monthly;
+                if (btnPlanEssential) btnPlanEssential.href = isYearly ? links.essential.yearly : links.essential.monthly;
+                if (btnPlanPremium) btnPlanPremium.href = isYearly ? links.premium.yearly : links.premium.monthly;
+
                 // Toggle visibility of monthly-only elements if any exist outside the amount span
                 document.querySelectorAll('.monthly-only').forEach(el => {
                     el.style.display = isYearly ? 'none' : 'block';

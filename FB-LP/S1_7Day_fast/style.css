@@ -613,6 +613,24 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
 .btn-neon-solid { background: var(--color-neon); color: black; }
 .btn-neon-solid:hover { background: var(--color-neon-hover); }
 
+/* NEW: Gold Button (Prominent CTA) */
+.btn-gold {
+    background-color: #000; /* Theme consistent dark background */
+    border: 2px solid #FFD700; /* Gold border */
+    color: #FFD700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+    text-shadow: 0 0 2px rgba(255, 215, 0, 0.5); /* Slight text glow */
+}
+
+.btn-gold:hover {
+    background-color: #FFD700;
+    color: #000;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    transform: translateY(-2px);
+    text-shadow: none;
+}
+
 /* =========================================
    8. FOOTER CTA & FOOTER
    ========================================= */
@@ -660,7 +678,7 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     position: relative;
     width: 200px;
     height: 200px;
-    margin: 30px auto 0; /* 居中 */
+    margin: 0 auto; /* 居中 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -694,61 +712,52 @@ a { text-decoration: none; color: inherit; transition: 0.3s; }
     /* 顶部和底部亮，形成开口环效果 */
     border-top: 4px solid var(--color-neon);
     border-bottom: 4px solid var(--color-neon);
-    /* 左右虚线 */
-    border-left: 2px dashed rgba(0, 255, 65, 0.3);
-    border-right: 2px dashed rgba(0, 255, 65, 0.3);
-    
-    animation: spin-right 2s linear infinite; /* 顺时针旋转 */
+    border-left: 1px solid rgba(0, 255, 65, 0.3);
+    border-right: 1px solid rgba(0, 255, 65, 0.3);
+    animation: spin 3s linear infinite;
 }
 
 /* 内圈 */
 .ring-inner {
     width: 70%;
     height: 70%;
-    border-left: 4px solid #fff;
-    border-right: 4px solid #fff;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    
-    animation: spin-left 1.5s linear infinite; /* 逆时针旋转 */
+    border-left: 4px solid var(--color-danger); /* 内圈用红色增加对比 */
+    border-right: 4px solid var(--color-danger);
+    border-top: 1px solid rgba(255, 0, 60, 0.3);
+    border-bottom: 1px solid rgba(255, 0, 60, 0.3);
+    animation: spin-reverse 2s linear infinite;
 }
 
-/* --- 3. 装饰：向外发散的速度线 --- */
-.speed-engine-wrapper::after {
-    content: '';
+/* --- 3. 速度线 (Speed Lines) --- */
+.speed-lines {
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 140%; height: 140%;
-    background: radial-gradient(circle, transparent 60%, rgba(0,255,65,0.05) 70%);
-    border: 1px solid rgba(0,255,65,0.1);
+    width: 120%;
+    height: 120%;
     border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 10deg,
+        rgba(0, 255, 65, 0.1) 10deg,
+        rgba(0, 255, 65, 0.1) 12deg
+    );
+    animation: spin 10s linear infinite;
     z-index: -1;
-    animation: radar-ripple 1.5s infinite ease-out;
+    mask-image: radial-gradient(black, transparent 70%); /* 边缘淡出 */
 }
 
-/* --- 动画定义 --- */
+/* 动画定义 */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
-/* 核心呼吸 */
+@keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
 @keyframes core-pulse {
-    0% { transform: scale(0.9); opacity: 0.8; box-shadow: 0 0 20px var(--color-neon); }
-    100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 50px var(--color-neon), 0 0 80px var(--color-neon); }
-}
-
-/* 顺时针旋转 */
-@keyframes spin-right {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* 逆时针旋转 */
-@keyframes spin-left {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-360deg); }
-}
-
-/* 扩散波纹 */
-@keyframes radar-ripple {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
-    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+    0% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 50px var(--color-neon), 0 0 100px var(--color-neon); }
 }

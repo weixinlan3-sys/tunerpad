@@ -37,13 +37,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="navbar reveal-down">
         <div class="container nav-flex">
             <div class="brand">
-                <picture>
-                    <source srcset="picture/logo-black.webp" type="image/webp">
-                    <img src="image/logo-black.png" alt="TunerPad" class="nav-logo" loading="lazy">
-                </picture>
+                <a href="https://tunerpad.com/">
+                    <picture>
+                        <source srcset="picture/logo-black.webp" type="image/webp">
+                        <img src="image/logo-black.png" alt="TunerPad" class="nav-logo" loading="lazy">
+                    </picture>
+                </a>
             </div>
             <div class="nav-btn-group">
-                <a href="#" class="btn btn-primary btn-sm hover-lift">START TUNING NOW</a>
+                <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn btn-primary btn-sm hover-lift">START TUNING NOW</a>
             </div>
         </div>
     </nav>
@@ -65,7 +67,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </p>
 
             <div class="hero-actions reveal fade-up delay-3">
-                <a href="#" class="btn btn-primary btn-lg btn-glow hover-lift">
+                <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn btn-primary btn-lg btn-glow hover-lift">
                     START TUNING NOW <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -235,7 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="p-card reveal fade-left">
                     <h3>Basic</h3>
                     <div class="price-container">
-                        <div class="price" data-monthly="€39" data-yearly="€27.25">€27.25<span>/month</span></div>
+                        <div class="price" data-monthly="€39" data-yearly="€27.25">€39<span>/month</span></div>
                         <div class="billed-text">Billed €329 yearly</div>
                     </div>
                     <ul class="p-list">
@@ -245,7 +247,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li><i class="fas fa-check"></i> Tuning Editor Features</li>
                         <li><i class="fas fa-check"></i> DAMOS Import</li>
                     </ul>
-                    <a href="#" class="btn btn-outline btn-block">START BASIC</a>
+                    <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwS0qi6o083yp&pk=tp_basic_monthly" id="btn-basic" class="btn btn-outline btn-block">START BASIC</a>
                 </div>
 
                 <!-- Essential Plan -->
@@ -264,7 +266,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li><i class="fas fa-check"></i> Tuning Editor Features</li>
                         <li><i class="fas fa-check"></i> DAMOS Import</li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block shadow-yellow">GET ESSENTIAL</a>
+                    <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" id="btn-essential" class="btn btn-primary btn-block shadow-yellow">GET ESSENTIAL</a>
                 </div>
 
                 <!-- Premium Plan -->
@@ -281,13 +283,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li><i class="fas fa-check"></i> Tuning Editor Features</li>
                         <li><i class="fas fa-check"></i> DAMOS Import</li>
                     </ul>
-                    <a href="#" class="btn btn-outline btn-block">GO PREMIUM</a>
+                    <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwUKKwj0xJNfh&pk=tp_premium_monthly" id="btn-premium" class="btn btn-outline btn-block">GO PREMIUM</a>
                 </div>
             </div>
 
             <div class="footer-cta text-center">
                 <h2 class="reveal fade-up">Your DAMOS files are ready. Are you?</h2>
-                <a href="#" class="btn btn-primary btn-lg btn-glow hover-lift reveal fade-up delay-1">START TUNING NOW</a>
+                <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" class="btn btn-primary btn-lg btn-glow hover-lift reveal fade-up delay-1">START TUNING NOW</a>
                 <p class="copyright">© 2026 TunerPad Cloud. The future of ECU editing.</p>
             </div>
         </div>
@@ -299,6 +301,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const toggleBtns = document.querySelectorAll('.toggle-btn');
             const priceElements = document.querySelectorAll('.price');
             const billedElements = document.querySelectorAll('.billed-text');
+
+            // Link Configuration
+            const links = {
+                monthly: {
+                    basic: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwS0qi6o083yp&pk=tp_basic_monthly',
+                    essential: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7',
+                    premium: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_SbwUKKwj0xJNfh&pk=tp_premium_monthly'
+                },
+                yearly: {
+                    basic: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_T70BpPXregSnuL&pk=tp_basic_yearly',
+                    essential: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_T70Cn3lzoLPmCt&pk=tp_essential_yearly',
+                    premium: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_Damos&pid=prod_T70ChYy5da43fi&pk=tp_premium_yearly'
+                }
+            };
+
+            const btnBasic = document.getElementById('btn-basic');
+            const btnEssential = document.getElementById('btn-essential');
+            const btnPremium = document.getElementById('btn-premium');
+            const promoBadge = document.querySelector('.promo-badge');
 
             function updatePricing(plan) {
                 // Update buttons
@@ -315,6 +336,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     const price = el.dataset[plan];
                     el.innerHTML = `${price}<span>/month</span>`;
                 });
+
+                // Update Links
+                if (btnBasic) btnBasic.href = links[plan].basic;
+                if (btnEssential) btnEssential.href = links[plan].essential;
+                if (btnPremium) btnPremium.href = links[plan].premium;
+
+                // Toggle FB Exclusive Badge
+                if (promoBadge) {
+                    promoBadge.style.display = (plan === 'monthly') ? 'block' : 'none';
+                }
 
                 // Show/Hide billed yearly text
                 billedElements.forEach(el => {
