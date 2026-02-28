@@ -438,25 +438,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="pricing-card featured essential-card">
-                    <div class="fb-special-tag">
+                    <div class="fb-special-tag monthly-only">
                         <span>FB</span>
                         <strong>SPECIAL</strong>
                     </div>
-                    <div class="spots-badge">🔥 Only 14 Spots Left Today</div>
+                    <div class="spots-badge monthly-only">🔥 Only 14 Spots Left Today</div>
                     <div class="card-header">
                         <h3>Essential</h3>
-                        <div class="price-special">
+                        
+                        <!-- Monthly View -->
+                        <div class="price-special monthly-only">
                             <div class="price-today">
                                 <span class="currency">€</span>0.00 <span class="period">Today</span>
                             </div>
                             <div class="price-then">
-                                Then <span class="currency">€</span><span class="amount" data-monthly="59" data-yearly="41.25">59</span>/month
+                                Then <span class="currency">€</span><span class="amount" data-monthly="59">59</span>/month
                             </div>
-                            <div class="billed-yearly-text" style="display: none; font-size: 12px; color: #888; margin-top: 5px;">billed yearly €495</div>
                         </div>
-                        <p class="desc">Billed monthly after 7 days<br>Cancel anytime</p>
+                        <p class="desc monthly-only">Billed monthly after 7 days<br>Cancel anytime</p>
+
+                        <!-- Yearly View -->
+                        <div class="price yearly-only" style="display: none;">
+                            <span class="currency">€</span>
+                            <span class="amount">41.25</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <div class="billed-yearly-text yearly-only" style="display: none;">billed yearly €495</div>
                         
-                        <div class="progress-container">
+                        <div class="progress-container monthly-only">
                             <div class="progress-text">Offer valid for first 200 FB users</div>
                             <div class="progress-bar-bg">
                                 <div class="progress-bar-fill" style="width: 93%;"></div>
@@ -474,6 +483,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_DTC&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7" 
                        data-monthly-link="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_DTC&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_7"
                        data-yearly-link="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_DTC&pid=prod_T70Cn3lzoLPmCt&pk=tp_essential_yearly"
+                       data-monthly-text="START FREE TRIAL"
+                       data-yearly-text="Get Started"
                        class="btn btn-primary-yellow btn-block pricing-btn">START FREE TRIAL</a>
                 </div>
 
@@ -542,28 +553,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const amounts = document.querySelectorAll('.amount');
         const billedTexts = document.querySelectorAll('.billed-yearly-text');
         const pricingBtns = document.querySelectorAll('.pricing-btn');
+        
+        const monthlyOnlyElements = document.querySelectorAll('.monthly-only');
+        const yearlyOnlyElements = document.querySelectorAll('.yearly-only');
 
         toggleSwitch.addEventListener('change', function(e) {
             // Update amounts
             amounts.forEach(amount => {
                 if (e.target.checked) {
-                    amount.innerText = amount.getAttribute('data-yearly');
+                    if (amount.hasAttribute('data-yearly')) {
+                        amount.innerText = amount.getAttribute('data-yearly');
+                    }
                 } else {
-                    amount.innerText = amount.getAttribute('data-monthly');
+                    if (amount.hasAttribute('data-monthly')) {
+                        amount.innerText = amount.getAttribute('data-monthly');
+                    }
                 }
             });
             
             // Toggle billed yearly text
             billedTexts.forEach(text => {
-                text.style.display = e.target.checked ? 'block' : 'none';
+                // For Essential card elements, we handle visibility via classes
+                if (!text.classList.contains('yearly-only')) {
+                    text.style.display = e.target.checked ? 'block' : 'none';
+                }
             });
 
-            // Update button links
+            // Toggle Monthly/Yearly specific elements
+            if (e.target.checked) { // Yearly
+                monthlyOnlyElements.forEach(el => el.style.display = 'none');
+                yearlyOnlyElements.forEach(el => el.style.display = 'block');
+            } else { // Monthly
+                monthlyOnlyElements.forEach(el => el.style.display = ''); 
+                yearlyOnlyElements.forEach(el => el.style.display = 'none');
+            }
+
+            // Update button links and text
             pricingBtns.forEach(btn => {
                 if (e.target.checked) {
                     btn.href = btn.getAttribute('data-yearly-link');
+                    if (btn.hasAttribute('data-yearly-text')) {
+                        btn.innerText = btn.getAttribute('data-yearly-text');
+                    }
                 } else {
                     btn.href = btn.getAttribute('data-monthly-link');
+                    if (btn.hasAttribute('data-monthly-text')) {
+                        btn.innerText = btn.getAttribute('data-monthly-text');
+                    }
                 }
             });
         });
