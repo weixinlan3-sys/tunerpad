@@ -148,7 +148,7 @@ a {
 }
 
 .hero-section h1 {
-    font-size: 52px; /* Slightly reduced from 56px */
+    font-size: 48px;
     color: var(--dark-blue);
     margin-bottom: 24px;
     line-height: 1.2; /* Improved line height */
@@ -160,18 +160,27 @@ a {
     position: relative;
     white-space: nowrap;
     z-index: 1;
+    display: inline-block;
+    padding: 0 10px;
 }
 
 .highlight-yellow::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 6px;
     left: 0;
     width: 100%;
-    height: 14px;
+    height: 26px;
     background: var(--accent-yellow);
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.95;
+    border-radius: 10px;
+    box-shadow: 0 10px 22px rgba(253, 199, 0, 0.35);
+}
+
+.hero-section h1 .highlight-yellow {
+    font-size: 1.25em;
+    letter-spacing: 0.2px;
 }
 
 .hero-section p {
