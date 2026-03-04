@@ -934,3 +934,33 @@ input:checked + .slider:before { transform: translateX(24px); }
         font-size: 32px;
     }
 }
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #333; /* Dark color to match disabled text */
+    animation: spin 0.8s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+/* Disabled Button State */
+.btn.disabled, .btn:disabled {
+    background-color: #e0e0e0 !important; /* Light gray */
+    color: #777777 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    transform: none !important;
+    pointer-events: none;
+}
