@@ -461,3 +461,11 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+/* Button Loading State */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.75;
+    cursor: wait;
+    position: relative;
+}
