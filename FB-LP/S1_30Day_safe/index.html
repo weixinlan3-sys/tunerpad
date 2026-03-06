@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MNQFZS9B');</script>
+<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TunerPad - Professional ECU Tuning Software</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- 核心变量与重置 (Based on Vultr Design Tokens) --- */
+        :root {
+            --brand-primary: #007bfc;
+            --brand-primary-hover: #0056b3;
+            --brand-dark: #031059;
+            --brand-darker: #0c153e;
+            --bg-light: #f5f6f9;
+            --text-main: #525666;
+            --text-dark: #142149;
+            --white: #ffffff;
+            --success-green: #00C853; /* TunerPad Safety Color */
+            --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --shadow-card: 0 4px 32px 0 rgba(10, 14, 29, .02), 0 8px 64px 0 rgba(10, 14, 29, .08);
+            --shadow-hover: 0 16px 40px 0 rgba(10, 14, 29, .04), 0 16px 80px 0 rgba(10, 14, 29, .16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        /* --- 通用布局类 --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-primary);
+            color: var(--white);
+        }
+        .btn-primary:hover { background-color: var(--brand-primary-hover); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--brand-primary);
+            color: var(--brand-primary);
+        }
+        .btn-outline:hover { background: rgba(0, 123, 252, 0.05); }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--brand-primary);
+        }
+        .btn-white:hover { background-color: #f0f0f0; }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-sub {
+            font-size: 18px;
+            color: var(--text-main);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px auto;
+        }
+
+        /* --- Navbar (复刻 Vultr 顶部) --- */
+        .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e6e7eb;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand-dark);
+            display: flex;
+            align-items: center;
+        }
+        .brand-logo span { color: var(--brand-primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .nav-links a:hover { color: var(--brand-primary); }
+
+        .nav-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .nav-login { font-weight: 500; font-size: 15px; color: var(--text-dark); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* 移动端简化 */
+        }
+
+        /* --- Hero Section (首屏: 类似 Vultr 的 Banner) --- */
+        .hero {
+            background-color: var(--bg-light);
+            padding: 80px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 模拟 Vultr 的深蓝波浪背景 */
+        .hero-corner-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30%;
+            height: 80%;
+            background: var(--brand-darker);
+            clip-path: polygon(0 20%, 100% 100%, 0 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-corner-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 80%;
+            background: var(--brand-darker);
+            clip-path: polygon(100% 20%, 0 100%, 100% 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            color: var(--brand-dark);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-main);
+            margin-bottom: 32px;
+        }
+
+        /* 注册框卡片 (Vultr 风格) */
+        .hero-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: var(--shadow-card);
+            width: 420px;
+            text-align: center;
+        }
+        .hero-card h3 {
+            color: var(--brand-dark);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .hero-card .sub-text {
+            color: var(--brand-primary);
+            font-weight: 500;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e6e7eb;
+            border-radius: 4px;
+            font-size: 16px;
+            background: rgba(0, 123, 252, 0.05); /* Vultr input style */
+        }
+        .form-input:focus { outline: 1px solid var(--brand-primary); }
+
+        @media (max-width: 992px) {
+            .hero-bg-shape { display: none; }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-card { width: 100%; max-width: 450px; margin-top: 40px; }
+            .hero h1 { font-size: 36px; }
+        }
+
+        /* --- Feature Grid (核心卖点) --- */
+        .features {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid #e6e7eb;
+            border-radius: 4px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            top: 0;
+        }
+
+        .feature-card:hover {
+            top: -8px; /* Vultr hover effect */
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- New Widget Style for Features --- */
+        .feature-card.widget-style {
+            padding: 0;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card.widget-style:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .widget-header {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e0e6ed;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .widget-header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccc;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .status-dot.green { background: var(--success-green); box-shadow: 0 0 5px rgba(0, 200, 83, 0.4); }
+        .status-dot.blue { background: var(--brand-primary); box-shadow: 0 0 5px rgba(0, 123, 252, 0.4); }
+        .status-dot.orange { background: #ff9800; }
+        
+        .widget-title-small {
+            font-size: 10px;
+            font-weight: 700;
+            color: #9aa0ac;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .widget-icon-right {
+            color: #d1d5db;
+            font-size: 12px;
+        }
+        
+        .widget-content {
+            padding: 24px;
+            flex: 1;
+        }
+        
+        .widget-footer {
+            padding: 12px 24px;
+            background: #fafbfc;
+            border-top: 1px solid #e0e6ed;
+            font-size: 12px;
+            color: #666;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Mock UI elements for widgets */
+        .w-progress {
+            width: 100%;
+        }
+        .w-progress-bar {
+            height: 4px;
+            background: #eee;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 4px;
+        }
+        .w-progress-bar .fill {
+            height: 100%;
+            background: var(--success-green);
+            width: 100%;
+        }
+        .w-progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: #888;
+        }
+
+        .w-tags {
+            display: flex;
+            gap: 8px;
+        }
+        .w-tag {
+            background: #eef2f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            color: #555;
+            font-family: monospace;
+        }
+
+        .w-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #666;
+        }
+        .w-stat strong { color: var(--brand-dark); }
+
+        /* --- Visual Demo Section (UI 展示) --- */
+        .ui-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .ui-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .ui-text { flex: 1; }
+        .ui-image {
+            flex: 1.2;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-card);
+            padding: 20px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        /* 模拟软件界面 */
+        .mock-ui {
+            width: 100%;
+            height: 100%;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 20px;
+        }
+        .mock-graph {
+            height: 150px;
+            background: linear-gradient(180deg, rgba(0,123,252,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-bottom: 2px solid var(--brand-primary);
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .mock-controls {
+            display: flex;
+            gap: 10px;
+        }
+        .mock-btn { width: 100px; height: 30px; background: #e0e0e0; border-radius: 4px; }
+        .mock-btn.active { background: var(--brand-primary); }
+
+        .safety-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--success-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,200,83,0.3);
+        }
+
+        @media (max-width: 992px) {
+            .ui-container { flex-direction: column-reverse; }
+        }
+
+        /* --- Comparison Table (对比) --- */
+        .comparison {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .compare-col {
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .compare-old {
+            background: #fff;
+            border: 1px solid #e6e7eb;
+        }
+
+        .compare-new {
+            background: var(--brand-darker);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .compare-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compare-list li {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .compare-old .compare-list li:before { content: "✖"; color: #f55656; font-weight: bold; }
+        .compare-new .compare-list li:before { content: "✔"; color: var(--success-green); font-weight: bold; }
+
+        /* --- Hardware Support (Logo Wall) --- */
+        .hardware {
+            padding: 60px 0;
+            background: var(--white);
+            border-top: 1px solid #e6e7eb;
+            text-align: center;
+        }
+        .hw-logos {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            opacity: 0.6;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .hw-logo { font-size: 24px; font-weight: 700; color: #a1a5b2; }
+
+        /* --- Footer CTA (暗色底部) --- */
+        .footer-cta {
+            background: var(--brand-primary);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .footer-cta h2 { font-size: 36px; margin-bottom: 24px; }
+        .footer-cta p { font-size: 18px; margin-bottom: 32px; opacity: 0.9; }
+
+        /* --- Simple Footer --- */
+        .site-footer {
+            background: var(--brand-darker);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            font-size: 14px;
+        }
+        .footer-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) --> 
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNQFZS9B" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> 
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="top-banner">
+        🎉 <strong>Special Offer:</strong> <span class="banner-30">30-Day Free Trial</span> for ECU Tuning Software
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand-logo"><img src="image/logo-white.webp" alt="TunerPad" style="height: 32px;"></a>
+            <div class="nav-actions">
+                <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_30" class="btn btn-primary track-checkout-btn" id="cta-nav">Claim Limited-Time Offer</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-corner-left"></div>
+        <div class="hero-corner-right"></div>
+        <div class="container" style="justify-content: center; text-align: center;">
+            <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
+                <span class="badge" style="background: rgba(0,123,252,0.1); color: var(--brand-primary); padding: 6px 16px; border-radius: 50px; font-weight: 600; font-size: 14px; margin-bottom: 24px; display: inline-block;">ECU Tuning Software • 30-Day Free Trial</span>
+                <h1 style="margin-bottom: 24px;">No Bugs. No Damage. Just Results.</h1>
+                <p style="font-size: 24px; margin-bottom: 48px; color: var(--text-main); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Built to deliver a successful tune—without the trial-and-error that can brick ECUs.
+                </p>
+
+                <div class="d-flex" style="gap: 16px; justify-content: center;">
+                    <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_30" class="btn btn-primary track-checkout-btn" id="cta-hero" style="font-size: 18px; padding: 16px 48px; box-shadow: 0 4px 14px rgba(0, 123, 252, 0.3);">
+                        Claim Limited-Time Offer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Safe ECU Tuning, One-Click OFF, and DAMOS</h2>
+            <p class="section-sub">Safety first—then speed. Disable common systems in seconds and tune faster with a massive DAMOS library.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card widget-style">
+                    <div class="widget-header">
+                        <div class="widget-header-left">
+                            <span class="status-dot green"></span>
+                            <span class="widget-title-small">SAFE_TUNING</span>
+                        </div>
+                        <span class="widget-icon-right">Protected</span>
+                    </div>
+                    <div class="widget-content">
+                        <span class="feature-icon">🛡️</span>
+                        <h3 class="feature-title">Safe ECU Tuning</h3>
+                        <p class="feature-desc">Built-in safety guardrails help prevent costly mistakes before you flash. Tune with confidence—without bricking ECUs.</p>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="w-stat">
+                            <span>🛡️ Protection:</span>
+                            <strong>Engine Safe Mode</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card widget-style">
+                    <div class="widget-header">
+                        <div class="widget-header-left">
+                            <span class="status-dot blue"></span>
+                            <span class="widget-title-small">ONE_CLICK_OFF</span>
+                        </div>
+                        <span class="widget-icon-right">Quick</span>
+                    </div>
+                    <div class="widget-content">
+                        <span class="feature-icon">🧰</span>
+                        <h3 class="feature-title">One-Click OFF</h3>
+                        <p class="feature-desc">Disable DTC, DPF, EGR, AdBlue/NOx, O2, Start/Stop and more—no map hunting.</p>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="w-tags">
+                            <span class="w-tag">DTC</span>
+                            <span class="w-tag">DPF</span>
+                            <span class="w-tag">EGR</span>
+                            <span class="w-tag">AdBlue/NOx</span>
+                            <span class="w-tag">O2</span>
+                            <span class="w-tag">Start/Stop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card widget-style">
+                    <div class="widget-header">
+                        <div class="widget-header-left">
+                            <span class="status-dot green"></span>
+                            <span class="widget-title-small">DAMOS_LIBRARY</span>
+                        </div>
+                        <span class="widget-icon-right">Search</span>
+                    </div>
+                    <div class="widget-content">
+                        <span class="feature-icon">📚</span>
+                        <h3 class="feature-title">Massive DAMOS Library</h3>
+                        <p class="feature-desc">Find the right axes and maps faster with a huge, constantly updated DAMOS collection.</p>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="w-progress">
+                            <div class="w-progress-bar"><div class="fill" style="width: 100%"></div></div>
+                            <div class="w-progress-text"><span>Coverage</span> <span>Growing Weekly</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (V2 Dark Theme) -->
+    <section class="pricing-section-v2">
+        <div class="container">
+            <!-- Toggle -->
+            <div class="pricing-toggle-container">
+                <div class="pricing-toggle">
+                    <button class="toggle-btn active" onclick="setBilling('monthly')">Pay Monthly</button>
+                    <button class="toggle-btn" onclick="setBilling('yearly')">Pay Yearly</button>
+                </div>
+                <span class="save-badge">Save 30% with yearly billing</span>
+            </div>
+
+            <!-- Grid -->
+            <div class="pricing-grid">
+                
+                <!-- Basic Card -->
+                <div class="pricing-card">
+                    <div class="card-title">Basic</div>
+                    <div class="card-price">
+                        <span class="currency" id="price-basic">€39</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="billing-text" id="bill-basic"></div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item"><span class="check-icon">✓</span> 20 DTC Removals</div>
+                        <div class="feature-item"><span class="cross-icon">✕</span> No Solutions (DPF/EGR...)</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> 5 File Downloads</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> Full Editor Access</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> DAMOS Support</div>
+                    </div>
+                    
+                    <a href="#" class="card-btn btn-gray" id="cta-basic">Buy Now</a>
+                </div>
+
+                <!-- Essential Card -->
+                <div class="pricing-card popular monthly-trial" id="card-essential">
+                    <div class="popular-badge" id="badge-essential">Most Popular</div>
+                    <div class="card-title">Essential</div>
+                    <div class="card-price">
+                        <span class="currency" id="price-essential">€0</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="billing-text" id="bill-essential">Then €59/month</div>
+                    <div class="cancel-anytime" id="cancel-essential">Cancel anytime</div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item"><span class="check-icon">✓</span> 300 DTC Removals</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> 100 Solutions (DPF/EGR...)</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> 5 File Downloads</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> Full Editor Access</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> DAMOS Support</div>
+                    </div>
+                    
+                    <a href="#" class="card-btn btn-yellow track-checkout-btn" id="cta-essential">Claim Limited-Time Offer</a>
+                </div>
+
+                <!-- Premium Card -->
+                <div class="pricing-card">
+                    <div class="card-title">Premium</div>
+                    <div class="card-price">
+                        <span class="currency" id="price-premium">€99</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="billing-text" id="bill-premium"></div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item"><span class="check-icon">✓</span> 600 DTC Removals</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> 200 Solutions (DPF/EGR...)</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> 100 File Downloads</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> Full Editor Access</div>
+                        <div class="feature-item"><span class="check-icon">✓</span> DAMOS Support</div>
+                    </div>
+                    
+                    <a href="#" class="card-btn btn-gray" id="cta-premium">Buy Now</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="hardware">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 24px;">Bring Your Own Hardware</h2>
+            <p>Compatible with industry standard J2534 devices you already own.</p>
+            <div class="hw-logos">
+                <div class="hw-logo">Tactrix</div>
+                <div class="hw-logo">Scanmatik</div>
+                <div class="hw-logo">Mongoose</div>
+                <div class="hw-logo">Bosch VCI</div>
+                <div class="hw-logo">Autel MaxiFlash</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <div class="container">
+            <h2>Ready to tune with confidence?</h2>
+            <p>Join 5,000+ tuners who sleep better at night.</p>
+            <a href="https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_30" class="btn btn-white btn-lg track-checkout-btn" id="cta-footer" style="padding: 16px 40px; font-size: 18px; color: var(--brand-primary); font-weight: 700;">Start Free Trial</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-flex">
+            <div>
+                <img src="image/logo-white.webp" alt="TunerPad" style="height: 24px;">
+                <span style="margin-left: 16px;">© 2026 TunerPad Inc.</span>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Pricing Logic
+        function setBilling(period) {
+            const btns = document.querySelectorAll('.toggle-btn');
+            const prices = {
+                basic: { monthly: '€39', yearly: '€27.25' },
+                essential: { monthly: '€0', yearly: '€41.25' },
+                premium: { monthly: '€99', yearly: '€69.25' }
+            };
+            const billing = {
+                basic: { monthly: '', yearly: '€327 / year' },
+                essential: { monthly: 'Then €59/month', yearly: '€495 / year' },
+                premium: { monthly: '', yearly: '€831 / year' }
+            };
+            const links = {
+                basic: {
+                    monthly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwS0qi6o083yp&pk=tp_basic_monthly',
+                    yearly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_T70BpPXregSnuL&pk=tp_basic_yearly'
+                },
+                essential: {
+                    monthly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwThFcdKzxJPV&pk=tp_essential_monthly_30',
+                    yearly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_T70Cn3lzoLPmCt&pk=tp_essential_yearly'
+                },
+                premium: {
+                    monthly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_SbwUKKwj0xJNfh&pk=tp_premium_monthly',
+                    yearly: 'https://tunerpad.com/tp/promotion?utm_source=facebook&utm_medium=paid_social&utm_campaign=S1_7Day_safe&pid=prod_T70ChYy5da43fi&pk=tp_premium_yearly'
+                }
+            };
+            const normalizePrice = (value) => String(value).replace(/[^\d.]/g, '');
+
+            // Update Buttons
+            btns.forEach(btn => {
+                if (btn.innerText.toLowerCase().includes(period)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Update Prices
+            document.getElementById('price-basic').innerText = prices.basic[period];
+            document.getElementById('price-essential').innerText = prices.essential[period];
+            document.getElementById('price-premium').innerText = prices.premium[period];
+
+            // Update Billing Text
+            document.getElementById('bill-basic').innerText = billing.basic[period];
+            document.getElementById('bill-essential').innerText = billing.essential[period];
+            document.getElementById('bill-premium').innerText = billing.premium[period];
+
+            // Update Links
+            const ctaBasic = document.getElementById('cta-basic');
+            const ctaPremium = document.getElementById('cta-premium');
+            ctaBasic.href = links.basic[period];
+            ctaPremium.href = links.premium[period];
+            ctaBasic.classList.add('track-checkout-paid');
+            ctaPremium.classList.add('track-checkout-paid');
+            ctaBasic.dataset.price = normalizePrice(prices.basic[period]);
+            ctaPremium.dataset.price = normalizePrice(prices.premium[period]);
+
+            const essentialCard = document.getElementById('card-essential');
+            const cancelEssential = document.getElementById('cancel-essential');
+            const badgeEssential = document.getElementById('badge-essential');
+            const ctaEssential = document.getElementById('cta-essential');
+            ctaEssential.href = links.essential[period];
+            if (period === 'monthly') {
+                essentialCard.classList.add('monthly-trial');
+                essentialCard.classList.add('popular');
+                cancelEssential.style.display = 'block';
+                badgeEssential.style.display = 'block';
+                ctaEssential.innerText = 'Claim Limited-Time Offer';
+                ctaEssential.classList.add('btn-yellow');
+                ctaEssential.classList.remove('btn-gray');
+                ctaEssential.classList.add('track-checkout-btn');
+                ctaEssential.classList.remove('track-checkout-paid');
+                delete ctaEssential.dataset.price;
+            } else {
+                essentialCard.classList.remove('monthly-trial');
+                essentialCard.classList.remove('popular');
+                cancelEssential.style.display = 'none';
+                badgeEssential.style.display = 'none';
+                ctaEssential.innerText = 'Buy Now';
+                ctaEssential.classList.add('btn-gray');
+                ctaEssential.classList.remove('btn-yellow');
+                ctaEssential.classList.remove('track-checkout-btn');
+                ctaEssential.classList.add('track-checkout-paid');
+                ctaEssential.dataset.price = normalizePrice(prices.essential[period]);
+            }
+        }
+
+        setBilling('monthly');
+
+
+    </script>
+</body>
+</html>

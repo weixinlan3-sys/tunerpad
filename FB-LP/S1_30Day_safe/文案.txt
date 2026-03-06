@@ -1,0 +1,8 @@
+Scared to Brick Your ECU? (害怕刷坏你的 ECU？)
+Body
+Don't let a bad checksum ruin your build. TunerPad's cloud engine automatically validates every file *before* you flash.
+✅ Auto-Checksum Correction (自动校验修正)
+✅ Instant Cloud Rollback (瞬间云端回滚)
+✅ 0% Failure Rate (0% 失败率)
+TunerPad V2 即将发布，开放内测名额
+Secure V2 Beta Access (立即锁定 V2 优先体验)
